@@ -335,16 +335,16 @@ body {
 .hardware-phone {
   width: 100%;
   max-width: 360px;
-  height: 600px;
-  border-radius: 38px;
-  background: #000000;
-  padding: 8px;
-  border: 1px solid rgba(186, 215, 247, 0.2);
+  height: 610px;
+  border-radius: 42px;
+  background: #080c14;
+  padding: 0;
+  border: 4px solid #1a202c;
   box-shadow: 
-    0 0 0 3px #12161f,
+    0 0 0 1px rgba(255, 255, 255, 0.12),
     0 25px 60px rgba(0, 0, 0, 0.9),
-    0 0 40px rgba(36, 161, 222, 0.15),
-    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+    0 0 40px rgba(36, 161, 222, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
   display: flex;
   flex-direction: column;
   position: relative;
@@ -356,76 +356,70 @@ body {
   .hardware-phone {
     height: 680px;
     border-radius: 48px;
-    padding: 10px;
-    box-shadow: 
-      0 0 0 4px #12161f,
-      0 30px 80px rgba(0, 0, 0, 0.9),
-      0 0 50px rgba(36, 161, 222, 0.15),
-      inset 0 1px 2px rgba(255, 255, 255, 0.3);
-  }
-}
-
-/* Inner Screen Container with clean rounded corners */
-.phone-screen {
-  width: 100%;
-  height: 100%;
-  border-radius: 30px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  background: #090e17;
-  position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-@media (min-width: 640px) {
-  .phone-screen {
-    border-radius: 38px;
-  }
-}
-
-.phone-header {
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-}
-
-@media (min-width: 640px) {
-  .phone-header {
-    border-top-left-radius: 38px;
-    border-top-right-radius: 38px;
-  }
-}
-
-.phone-footer {
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-}
-
-@media (min-width: 640px) {
-  .phone-footer {
-    border-bottom-left-radius: 38px;
-    border-bottom-right-radius: 38px;
+    border-width: 5px;
   }
 }
 
 .hardware-island {
   position: absolute;
-  top: 12px;
+  top: 10px;
   left: 50%;
   transform: translateX(-50%);
-  width: 90px;
-  height: 20px;
+  width: 96px;
+  height: 22px;
   background: #000000;
   border-radius: 20px;
   z-index: 40;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 @media (min-width: 640px) {
   .hardware-island {
-    top: 14px;
+    top: 12px;
     width: 110px;
     height: 24px;
+  }
+}
+
+.phone-header {
+  padding-top: 36px;
+  padding-bottom: 12px;
+  padding-left: 14px;
+  padding-right: 14px;
+  background: #111722;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-top-left-radius: 38px;
+  border-top-right-radius: 38px;
+  z-index: 20;
+  flex-shrink: 0;
+}
+
+@media (min-width: 640px) {
+  .phone-header {
+    padding-top: 40px;
+    border-top-left-radius: 44px;
+    border-top-right-radius: 44px;
+  }
+}
+
+.phone-footer {
+  padding-top: 10px;
+  padding-bottom: 16px;
+  padding-left: 12px;
+  padding-right: 12px;
+  background: #111722;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom-left-radius: 38px;
+  border-bottom-right-radius: 38px;
+  z-index: 20;
+  flex-shrink: 0;
+}
+
+@media (min-width: 640px) {
+  .phone-footer {
+    padding-bottom: 20px;
+    border-bottom-left-radius: 44px;
+    border-bottom-right-radius: 44px;
   }
 }
 

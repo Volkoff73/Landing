@@ -399,38 +399,33 @@
             <div class="hardware-phone">
               <div class="hardware-island"></div>
 
-              <!-- Inner Phone Screen with curved corners -->
-              <div class="phone-screen">
-                
-                <!-- Telegram Header (Top rounded) -->
-                <div class="phone-header pt-7 sm:pt-8 pb-2.5 px-3 bg-[#111722] border-b border-white/[0.08] flex items-center justify-between z-20 shrink-0">
-                  <div class="flex items-center gap-2">
-                    <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-tr from-electric-blue to-void-violet flex items-center justify-center text-xs font-bold text-white shadow">
-                      💅
-                    </div>
-                    <div>
-                      <div class="flex items-center gap-1">
-                        <span class="font-semibold text-[11px] sm:text-xs text-white truncate max-w-[170px]" id="phoneBotName">SlotBot | @zapishis_app_bot</span>
-                        <i data-lucide="badge-check" class="w-3 h-3 text-electric-blue shrink-0"></i>
-                      </div>
-                      <div class="text-[9px] sm:text-[10px] font-mono text-electric-blue" id="phoneBotStatus">бот онлайн-записи</div>
-                    </div>
+              <!-- Telegram Header (Seamless top rounded) -->
+              <div class="phone-header flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-tr from-electric-blue to-void-violet flex items-center justify-center text-xs font-bold text-white shadow">
+                    💅
                   </div>
-                  <button id="phoneQuickReset" title="Сбросить" class="text-fog-veil hover:text-white p-1">
-                    <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
-                  </button>
+                  <div>
+                    <div class="flex items-center gap-1">
+                      <span class="font-semibold text-[11px] sm:text-xs text-white truncate max-w-[170px]" id="phoneBotName">SlotBot | @zapishis_app_bot</span>
+                      <i data-lucide="badge-check" class="w-3 h-3 text-electric-blue shrink-0"></i>
+                    </div>
+                    <div class="text-[9px] sm:text-[10px] font-mono text-electric-blue" id="phoneBotStatus">бот онлайн-записи</div>
+                  </div>
                 </div>
+                <button id="phoneQuickReset" title="Сбросить" class="text-fog-veil hover:text-white p-1">
+                  <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
 
-                <!-- Message Stream -->
-                <div class="flex-1 overflow-y-auto p-2.5 sm:p-3 space-y-2.5 font-sans text-xs select-none chat-messages" id="phoneChatBody">
-                  <!-- Dynamically populated -->
-                </div>
+              <!-- Message Stream -->
+              <div class="flex-1 overflow-y-auto p-2.5 sm:p-3 space-y-2.5 font-sans text-xs select-none chat-messages" id="phoneChatBody">
+                <!-- Dynamically populated -->
+              </div>
 
-                <!-- Interactive Controls Area (Bottom rounded) -->
-                <div class="phone-footer p-2 sm:p-2.5 bg-[#111722] border-t border-white/[0.08] shrink-0 z-20 space-y-1.5" id="phoneKeyboardArea">
-                  <!-- Dynamically populated -->
-                </div>
-
+              <!-- Interactive Controls Area (Seamless bottom rounded) -->
+              <div class="phone-footer space-y-1.5" id="phoneKeyboardArea">
+                <!-- Dynamically populated -->
               </div>
 
             </div>
