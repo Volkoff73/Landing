@@ -1,0 +1,3 @@
+@echo off
+echo Opening SlotBot Landing Page...
+start "" "%~dp0index.html"
