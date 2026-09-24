@@ -330,25 +330,25 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   Hardware Simulator Stage (Apple Obsidian Frame)
+   Hardware Simulator Stage (Apple Obsidian Frame with Blue Glassmorphism)
    -------------------------------------------------------------------------- */
 .hardware-phone {
   width: 100%;
   max-width: 360px;
   height: 610px;
-  border-radius: 42px;
-  background: #080c14;
-  padding: 0;
-  border: 4px solid #1a202c;
+  border-radius: 40px;
+  background: #060a12;
+  padding: 0 !important;
+  border: 3px solid #1e283a;
   box-shadow: 
-    0 0 0 1px rgba(255, 255, 255, 0.12),
+    0 0 0 1px rgba(255, 255, 255, 0.15),
     0 25px 60px rgba(0, 0, 0, 0.9),
-    0 0 40px rgba(36, 161, 222, 0.2),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    0 0 50px rgba(36, 161, 222, 0.25),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
   display: flex;
   flex-direction: column;
   position: relative;
-  overflow: hidden;
+  overflow: hidden !important;
   margin: 0 auto;
 }
 
@@ -356,7 +356,7 @@ body {
   .hardware-phone {
     height: 680px;
     border-radius: 48px;
-    border-width: 5px;
+    border-width: 4px;
   }
 }
 
@@ -369,8 +369,9 @@ body {
   height: 22px;
   background: #000000;
   border-radius: 20px;
-  z-index: 40;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 50;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 @media (min-width: 640px) {
@@ -381,45 +382,54 @@ body {
   }
 }
 
+/* Blue Glassmorphism Top Header */
 .phone-header {
+  width: 100%;
   padding-top: 36px;
   padding-bottom: 12px;
-  padding-left: 14px;
-  padding-right: 14px;
-  background: #111722;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  border-top-left-radius: 38px;
-  border-top-right-radius: 38px;
-  z-index: 20;
+  padding-left: 16px;
+  padding-right: 16px;
+  background: linear-gradient(180deg, rgba(20, 36, 60, 0.92) 0%, rgba(12, 22, 38, 0.85) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(216, 236, 248, 0.25);
+  z-index: 30;
   flex-shrink: 0;
 }
 
 @media (min-width: 640px) {
   .phone-header {
     padding-top: 40px;
-    border-top-left-radius: 44px;
-    border-top-right-radius: 44px;
   }
 }
 
+/* Chat messages scroll viewport */
+.chat-messages {
+  background: radial-gradient(circle at 50% 30%, rgba(36, 161, 222, 0.06) 0%, transparent 70%), #060a12;
+  width: 100%;
+  flex: 1 1 0%;
+}
+
+/* Blue Glassmorphism Bottom Footer */
 .phone-footer {
-  padding-top: 10px;
+  width: 100%;
+  padding-top: 12px;
   padding-bottom: 16px;
-  padding-left: 12px;
-  padding-right: 12px;
-  background: #111722;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom-left-radius: 38px;
-  border-bottom-right-radius: 38px;
-  z-index: 20;
+  padding-left: 14px;
+  padding-right: 14px;
+  background: linear-gradient(0deg, rgba(20, 36, 60, 0.95) 0%, rgba(12, 22, 38, 0.88) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(56, 189, 248, 0.25);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(216, 236, 248, 0.15);
+  z-index: 30;
   flex-shrink: 0;
 }
 
 @media (min-width: 640px) {
   .phone-footer {
-    padding-bottom: 20px;
-    border-bottom-left-radius: 44px;
-    border-bottom-right-radius: 44px;
+    padding-bottom: 22px;
   }
 }
 
