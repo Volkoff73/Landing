@@ -1,6 +1,7 @@
 /* ==========================================================================
-   BEAUTYBOT / ZAPISHIS — HIGH-TECH KEYNOTE DESIGN SYSTEM
+   SLOTBOT / ZAPISHIS — HIGH-TECH KEYNOTE DESIGN SYSTEM
    Synthesized from AuthKit (Frosted Glass Cathedral) & Apple (Midnight Stage)
+   Fully responsive across Mobile (320px+), Tablet (768px-1024px), Desktop
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap');
@@ -53,6 +54,7 @@ html {
   background-color: var(--color-canvas);
   color: var(--color-frost-glow);
   -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -79,20 +81,27 @@ body {
   background-image: 
     linear-gradient(to right, rgba(186, 215, 247, 0.04) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(186, 215, 247, 0.04) 1px, transparent 1px);
-  background-size: 64px 64px;
+  background-size: 48px 48px;
   mask-image: radial-gradient(ellipse 80% 60% at 50% 10%, #000 30%, transparent 80%);
   -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 10%, #000 30%, transparent 80%);
   pointer-events: none;
   z-index: 0;
 }
 
+@media (min-width: 768px) {
+  .blueprint-grid {
+    background-size: 64px 64px;
+  }
+}
+
 .spotlight-halo {
   position: absolute;
-  top: -120px;
+  top: -100px;
   left: 50%;
   transform: translateX(-50%);
-  width: 900px;
-  height: 600px;
+  width: 100%;
+  max-width: 900px;
+  height: 500px;
   background: radial-gradient(ellipse at center, rgba(124, 145, 182, 0.22) 0%, rgba(36, 161, 222, 0.08) 40%, transparent 70%);
   filter: blur(80px);
   pointer-events: none;
@@ -101,13 +110,20 @@ body {
 
 .ambient-glow-purple {
   position: absolute;
-  width: 600px;
-  height: 600px;
+  width: 450px;
+  height: 450px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(102, 58, 243, 0.12) 0%, transparent 70%);
-  filter: blur(100px);
+  filter: blur(90px);
   pointer-events: none;
   z-index: 0;
+}
+
+@media (min-width: 768px) {
+  .ambient-glow-purple {
+    width: 600px;
+    height: 600px;
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -122,14 +138,27 @@ body {
 .eyebrow-container {
   display: inline-flex;
   align-items: center;
-  gap: 16px;
+  gap: 10px;
   margin-bottom: 12px;
+  max-width: 100%;
+}
+
+@media (min-width: 640px) {
+  .eyebrow-container {
+    gap: 16px;
+  }
 }
 
 .eyebrow-line {
   height: 1px;
-  width: 40px;
+  width: 24px;
   background: linear-gradient(90deg, transparent, rgba(186, 215, 247, 0.3));
+}
+
+@media (min-width: 640px) {
+  .eyebrow-line {
+    width: 40px;
+  }
 }
 
 .eyebrow-line.right {
@@ -138,10 +167,17 @@ body {
 
 .eyebrow-label {
   font-family: var(--font-mono);
-  font-size: 13px;
-  letter-spacing: 0.12em;
+  font-size: 11px;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
   color: var(--color-moon-mist);
+}
+
+@media (min-width: 640px) {
+  .eyebrow-label {
+    font-size: 13px;
+    letter-spacing: 0.12em;
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -152,7 +188,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 12px 28px;
+  padding: 12px 24px;
   border-radius: var(--radius-pill);
   font-size: 14px;
   font-weight: 500;
@@ -163,6 +199,13 @@ body {
   text-decoration: none;
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  min-height: 46px;
+}
+
+@media (min-width: 640px) {
+  .btn-keynote-primary {
+    padding: 12px 28px;
+  }
 }
 
 .btn-keynote-primary:hover {
@@ -175,7 +218,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 12px 24px;
+  padding: 12px 20px;
   border-radius: var(--radius-pill);
   font-size: 14px;
   font-weight: 500;
@@ -187,6 +230,13 @@ body {
   text-decoration: none;
   cursor: pointer;
   transition: all 0.2s ease;
+  min-height: 46px;
+}
+
+@media (min-width: 640px) {
+  .btn-ghost-pill {
+    padding: 12px 24px;
+  }
 }
 
 .btn-ghost-pill:hover {
@@ -200,7 +250,7 @@ body {
    Plinth & Glass Cards (AuthKit Cathedral + Apple 28px Panels)
    -------------------------------------------------------------------------- */
 .keynote-card {
-  border-radius: var(--radius-card);
+  border-radius: 20px;
   background: rgba(14, 18, 27, 0.7);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -209,26 +259,47 @@ body {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+@media (min-width: 640px) {
+  .keynote-card {
+    border-radius: var(--radius-card);
+  }
+}
+
 .keynote-card:hover {
   border-color: rgba(186, 215, 247, 0.25);
   background: rgba(18, 24, 36, 0.8);
 }
 
 .metric-plinth {
-  border-radius: var(--radius-card);
+  border-radius: 20px;
   background: #090c14;
   border: 1px solid rgba(186, 215, 247, 0.08);
   box-shadow: inset 0 1px 1px rgba(216, 236, 248, 0.1), 0 20px 40px rgba(0,0,0,0.6);
-  padding: 28px;
+  padding: 20px;
+}
+
+@media (min-width: 640px) {
+  .metric-plinth {
+    border-radius: var(--radius-card);
+    padding: 28px;
+  }
 }
 
 /* --------------------------------------------------------------------------
    Niche Segmented Control (Apple Keynote Style)
    -------------------------------------------------------------------------- */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 .niche-nav-pill {
-  padding: 9px 18px;
+  padding: 8px 14px;
   border-radius: var(--radius-pill);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   color: var(--color-fog-veil);
   background: transparent;
@@ -236,6 +307,14 @@ body {
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
+  flex-shrink: 0;
+}
+
+@media (min-width: 640px) {
+  .niche-nav-pill {
+    padding: 9px 18px;
+    font-size: 13px;
+  }
 }
 
 .niche-nav-pill:hover {
@@ -254,34 +333,57 @@ body {
    Hardware Simulator Stage (Apple Obsidian Frame)
    -------------------------------------------------------------------------- */
 .hardware-phone {
-  width: 360px;
-  height: 700px;
-  border-radius: 48px;
+  width: 100%;
+  max-width: 360px;
+  height: 600px;
+  border-radius: 36px;
   background: #000000;
-  padding: 12px;
+  padding: 10px;
   border: 1px solid rgba(186, 215, 247, 0.2);
   box-shadow: 
-    0 0 0 4px #12161f,
-    0 30px 80px rgba(0, 0, 0, 0.9),
-    0 0 50px rgba(36, 161, 222, 0.15),
+    0 0 0 3px #12161f,
+    0 25px 60px rgba(0, 0, 0, 0.9),
+    0 0 40px rgba(36, 161, 222, 0.15),
     inset 0 1px 2px rgba(255, 255, 255, 0.3);
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .hardware-phone {
+    height: 680px;
+    border-radius: 48px;
+    padding: 12px;
+    box-shadow: 
+      0 0 0 4px #12161f,
+      0 30px 80px rgba(0, 0, 0, 0.9),
+      0 0 50px rgba(36, 161, 222, 0.15),
+      inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  }
 }
 
 .hardware-island {
   position: absolute;
-  top: 16px;
+  top: 14px;
   left: 50%;
   transform: translateX(-50%);
-  width: 110px;
-  height: 24px;
+  width: 90px;
+  height: 20px;
   background: #000000;
   border-radius: 20px;
   z-index: 40;
   border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (min-width: 640px) {
+  .hardware-island {
+    top: 16px;
+    width: 110px;
+    height: 24px;
+  }
 }
 
 /* Simulator Messages */
@@ -289,25 +391,41 @@ body {
   background: #141b26;
   border: 1px solid rgba(186, 215, 247, 0.08);
   color: #e2e8f0;
-  border-radius: 18px 18px 18px 4px;
-  padding: 10px 14px;
-  max-width: 90%;
-  font-size: 12px;
+  border-radius: 16px 16px 16px 4px;
+  padding: 9px 12px;
+  max-width: 92%;
+  font-size: 11.5px;
   line-height: 1.45;
   animation: simFade 0.25s ease-out;
+}
+
+@media (min-width: 640px) {
+  .sim-bubble-in {
+    padding: 10px 14px;
+    font-size: 12px;
+    border-radius: 18px 18px 18px 4px;
+  }
 }
 
 .sim-bubble-out {
   background: #1d3b5c;
   border: 1px solid rgba(56, 189, 248, 0.2);
   color: #ffffff;
-  border-radius: 18px 18px 4px 18px;
-  padding: 10px 14px;
-  max-width: 90%;
+  border-radius: 16px 16px 4px 16px;
+  padding: 9px 12px;
+  max-width: 92%;
   margin-left: auto;
-  font-size: 12px;
+  font-size: 11.5px;
   line-height: 1.45;
   animation: simFade 0.25s ease-out;
+}
+
+@media (min-width: 640px) {
+  .sim-bubble-out {
+    padding: 10px 14px;
+    font-size: 12px;
+    border-radius: 18px 18px 4px 18px;
+  }
 }
 
 @keyframes simFade {
@@ -317,16 +435,24 @@ body {
 
 .sim-btn-action {
   width: 100%;
-  padding: 9px 12px;
+  padding: 8px 10px;
   border-radius: 10px;
   background: rgba(36, 161, 222, 0.15);
   border: 1px solid rgba(56, 189, 248, 0.3);
   color: #38bdf8;
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.15s ease;
   text-align: center;
+  min-height: 38px;
+}
+
+@media (min-width: 640px) {
+  .sim-btn-action {
+    padding: 9px 12px;
+    font-size: 12px;
+  }
 }
 
 .sim-btn-action:hover {
@@ -340,7 +466,7 @@ body {
 input[type="range"] {
   -webkit-appearance: none;
   width: 100%;
-  height: 4px;
+  height: 6px;
   background: rgba(186, 215, 247, 0.12);
   border-radius: 4px;
   outline: none;
@@ -348,8 +474,8 @@ input[type="range"] {
 
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background: #ffffff;
   cursor: pointer;
