@@ -330,21 +330,20 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   Hardware Simulator Stage (Apple Obsidian Frame with Blue Glassmorphism)
+   Hardware Simulator Stage (Seamless Blue Glassmorphism)
    -------------------------------------------------------------------------- */
 .hardware-phone {
   width: 100%;
   max-width: 360px;
   height: 610px;
-  border-radius: 40px;
-  background: #060a12;
+  border-radius: 44px;
+  background: #080c14;
   padding: 0 !important;
-  border: 3px solid #1e283a;
+  border: 3px solid #24a1de;
   box-shadow: 
-    0 0 0 1px rgba(255, 255, 255, 0.15),
-    0 25px 60px rgba(0, 0, 0, 0.9),
-    0 0 50px rgba(36, 161, 222, 0.25),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    0 0 0 1px rgba(255, 255, 255, 0.2),
+    0 25px 60px rgba(0, 0, 0, 0.95),
+    0 0 45px rgba(36, 161, 222, 0.35);
   display: flex;
   flex-direction: column;
   position: relative;
@@ -370,8 +369,8 @@ body {
   background: #000000;
   border-radius: 20px;
   z-index: 50;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 @media (min-width: 640px) {
@@ -382,18 +381,20 @@ body {
   }
 }
 
-/* Blue Glassmorphism Top Header */
+/* Blue Glass Top Header */
 .phone-header {
   width: 100%;
   padding-top: 36px;
   padding-bottom: 12px;
   padding-left: 16px;
   padding-right: 16px;
-  background: linear-gradient(180deg, rgba(20, 36, 60, 0.92) 0%, rgba(12, 22, 38, 0.85) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(56, 189, 248, 0.25);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(216, 236, 248, 0.25);
+  background: linear-gradient(180deg, rgba(28, 52, 88, 0.96) 0%, rgba(16, 30, 52, 0.92) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.35);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(216, 236, 248, 0.3);
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
   z-index: 30;
   flex-shrink: 0;
 }
@@ -401,28 +402,32 @@ body {
 @media (min-width: 640px) {
   .phone-header {
     padding-top: 40px;
+    border-top-left-radius: 44px;
+    border-top-right-radius: 44px;
   }
 }
 
 /* Chat messages scroll viewport */
 .chat-messages {
-  background: radial-gradient(circle at 50% 30%, rgba(36, 161, 222, 0.06) 0%, transparent 70%), #060a12;
+  background: radial-gradient(circle at 50% 30%, rgba(36, 161, 222, 0.08) 0%, transparent 70%), #070b14;
   width: 100%;
   flex: 1 1 0%;
 }
 
-/* Blue Glassmorphism Bottom Footer */
+/* Blue Glass Bottom Footer */
 .phone-footer {
   width: 100%;
   padding-top: 12px;
-  padding-bottom: 16px;
+  padding-bottom: 18px;
   padding-left: 14px;
   padding-right: 14px;
-  background: linear-gradient(0deg, rgba(20, 36, 60, 0.95) 0%, rgba(12, 22, 38, 0.88) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-top: 1px solid rgba(56, 189, 248, 0.25);
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(216, 236, 248, 0.15);
+  background: linear-gradient(0deg, rgba(28, 52, 88, 0.98) 0%, rgba(16, 30, 52, 0.94) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-top: 1px solid rgba(56, 189, 248, 0.35);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(216, 236, 248, 0.25);
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
   z-index: 30;
   flex-shrink: 0;
 }
@@ -430,6 +435,8 @@ body {
 @media (min-width: 640px) {
   .phone-footer {
     padding-bottom: 22px;
+    border-bottom-left-radius: 44px;
+    border-bottom-right-radius: 44px;
   }
 }
 

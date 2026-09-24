@@ -44,7 +44,82 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <!-- Custom Styles -->
-  <link rel="stylesheet" href="styles.css?v=3.0" />
+  <link rel="stylesheet" href="styles.css?v=4.0" />
+  <style>
+    .hardware-phone {
+      width: 100% !important;
+      max-width: 360px !important;
+      height: 610px !important;
+      border-radius: 44px !important;
+      background: #080c14 !important;
+      padding: 0 !important;
+      border: 3px solid #24a1de !important;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2), 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 45px rgba(36, 161, 222, 0.35) !important;
+      display: flex !important;
+      flex-direction: column !important;
+      position: relative !important;
+      overflow: hidden !important;
+      margin: 0 auto !important;
+    }
+    @media (min-width: 640px) {
+      .hardware-phone {
+        height: 680px !important;
+        border-radius: 48px !important;
+        border-width: 4px !important;
+      }
+    }
+    .phone-header {
+      width: 100% !important;
+      padding-top: 36px !important;
+      padding-bottom: 12px !important;
+      padding-left: 16px !important;
+      padding-right: 16px !important;
+      background: linear-gradient(180deg, rgba(28, 52, 88, 0.96) 0%, rgba(16, 30, 52, 0.92) 100%) !important;
+      backdrop-filter: blur(24px) !important;
+      -webkit-backdrop-filter: blur(24px) !important;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.35) !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(216, 236, 248, 0.3) !important;
+      border-top-left-radius: 40px !important;
+      border-top-right-radius: 40px !important;
+      z-index: 30 !important;
+      flex-shrink: 0 !important;
+    }
+    @media (min-width: 640px) {
+      .phone-header {
+        padding-top: 40px !important;
+        border-top-left-radius: 44px !important;
+        border-top-right-radius: 44px !important;
+      }
+    }
+    .phone-footer {
+      width: 100% !important;
+      padding-top: 12px !important;
+      padding-bottom: 18px !important;
+      padding-left: 14px !important;
+      padding-right: 14px !important;
+      background: linear-gradient(0deg, rgba(28, 52, 88, 0.98) 0%, rgba(16, 30, 52, 0.94) 100%) !important;
+      backdrop-filter: blur(24px) !important;
+      -webkit-backdrop-filter: blur(24px) !important;
+      border-top: 1px solid rgba(56, 189, 248, 0.35) !important;
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(216, 236, 248, 0.25) !important;
+      border-bottom-left-radius: 40px !important;
+      border-bottom-right-radius: 40px !important;
+      z-index: 30 !important;
+      flex-shrink: 0 !important;
+    }
+    @media (min-width: 640px) {
+      .phone-footer {
+        padding-bottom: 22px !important;
+        border-bottom-left-radius: 44px !important;
+        border-bottom-right-radius: 44px !important;
+      }
+    }
+    .chat-messages {
+      background: radial-gradient(circle at 50% 30%, rgba(36, 161, 222, 0.08) 0%, transparent 70%), #070b14 !important;
+      width: 100% !important;
+      flex: 1 1 0% !important;
+    }
+  </style>
 </head>
 <body class="bg-canvas text-frost-glow antialiased selection:bg-electric-blue selection:text-white pb-16 sm:pb-0">
 
