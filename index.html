@@ -3,37 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <title>SlotBot / Запишись — High-Tech Telegram Scheduling Engine</title>
-  <meta name="description" content="Интерактивная презентация автономной системы онлайн-записи в Telegram для бьюти-мастеров, психологов, репетиторов, тренеров и экспертов." />
+  <title>SlotBot — Онлайн-запись клиентов в Telegram 24/7</title>
+  <meta name="description" content="Умный Telegram-бот для онлайн-записи клиентов без звонков и переписок. 14 дней бесплатно. Для бьюти-мастеров, психологов, репетиторов, тренеров и экспертов." />
 
-  <!-- Fonts: Inter, Space Grotesk & JetBrains Mono -->
+  <!-- Google Fonts: Plus Jakarta Sans, Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
-  <!-- Tailwind CSS CDN -->
+  <!-- Tailwind CSS CDN with Zendesk-Inspired Light Palette -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            canvas: '#05060f',
-            graphite: '#0e0e12',
-            'steel-plate': '#1c212c',
-            'fog-veil': '#9da7ba',
-            'moon-mist': '#c7d3ea',
-            'frost-glow': '#d1e4fa',
-            'ice-highlight': '#d8ecf8',
-            'electric-blue': '#24a1de',
-            'apple-blue': '#0071e3',
-            'void-violet': '#663af3',
-            'emerald-glow': '#10b981'
+            sand: '#fbfaf7',
+            'sand-light': '#f5f3ec',
+            mint: '#e3f0e6',
+            sky: '#deeff2',
+            cream: '#f6eee3',
+            rose: '#fceeed',
+            'forest-dark': '#03363d',
+            'forest-deep': '#02252a',
+            'forest-medium': '#17494f',
+            'text-primary': '#03363d',
+            'text-secondary': '#486266',
+            'coral-accent': '#e96d46',
+            'yellow-accent': '#f8c544',
+            'mint-accent': '#309e66',
+            'blue-accent': '#24a1de'
           },
           fontFamily: {
+            display: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
             sans: ['Inter', 'sans-serif'],
-            display: ['Space Grotesk', 'Inter', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace']
+            mono: ['"JetBrains Mono"', 'monospace']
           }
         }
       }
@@ -44,463 +48,385 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <!-- Custom Styles -->
-  <link rel="stylesheet" href="styles.css?v=4.0" />
-  <style>
-    .hardware-phone {
-      width: 100% !important;
-      max-width: 360px !important;
-      height: 610px !important;
-      border-radius: 44px !important;
-      background: #080c14 !important;
-      padding: 0 !important;
-      border: 3px solid #24a1de !important;
-      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2), 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 45px rgba(36, 161, 222, 0.35) !important;
-      display: flex !important;
-      flex-direction: column !important;
-      position: relative !important;
-      overflow: hidden !important;
-      margin: 0 auto !important;
-    }
-    @media (min-width: 640px) {
-      .hardware-phone {
-        height: 680px !important;
-        border-radius: 48px !important;
-        border-width: 4px !important;
-      }
-    }
-    .phone-header {
-      width: 100% !important;
-      padding-top: 36px !important;
-      padding-bottom: 12px !important;
-      padding-left: 16px !important;
-      padding-right: 16px !important;
-      background: linear-gradient(180deg, rgba(28, 52, 88, 0.96) 0%, rgba(16, 30, 52, 0.92) 100%) !important;
-      backdrop-filter: blur(24px) !important;
-      -webkit-backdrop-filter: blur(24px) !important;
-      border-bottom: 1px solid rgba(56, 189, 248, 0.35) !important;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(216, 236, 248, 0.3) !important;
-      border-top-left-radius: 40px !important;
-      border-top-right-radius: 40px !important;
-      z-index: 30 !important;
-      flex-shrink: 0 !important;
-    }
-    @media (min-width: 640px) {
-      .phone-header {
-        padding-top: 40px !important;
-        border-top-left-radius: 44px !important;
-        border-top-right-radius: 44px !important;
-      }
-    }
-    .phone-footer {
-      width: 100% !important;
-      padding-top: 12px !important;
-      padding-bottom: 18px !important;
-      padding-left: 14px !important;
-      padding-right: 14px !important;
-      background: linear-gradient(0deg, rgba(28, 52, 88, 0.98) 0%, rgba(16, 30, 52, 0.94) 100%) !important;
-      backdrop-filter: blur(24px) !important;
-      -webkit-backdrop-filter: blur(24px) !important;
-      border-top: 1px solid rgba(56, 189, 248, 0.35) !important;
-      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(216, 236, 248, 0.25) !important;
-      border-bottom-left-radius: 40px !important;
-      border-bottom-right-radius: 40px !important;
-      z-index: 30 !important;
-      flex-shrink: 0 !important;
-    }
-    @media (min-width: 640px) {
-      .phone-footer {
-        padding-bottom: 22px !important;
-        border-bottom-left-radius: 44px !important;
-        border-bottom-right-radius: 44px !important;
-      }
-    }
-    .chat-messages {
-      background: radial-gradient(circle at 50% 30%, rgba(36, 161, 222, 0.08) 0%, transparent 70%), #070b14 !important;
-      width: 100% !important;
-      flex: 1 1 0% !important;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css?v=5.0" />
 </head>
-<body class="bg-canvas text-frost-glow antialiased selection:bg-electric-blue selection:text-white pb-16 sm:pb-0">
+<body class="bg-sand text-text-primary antialiased selection:bg-coral-accent selection:text-white pb-20 sm:pb-0">
 
-  <!-- Background blueprint grid and lighting halos -->
-  <div class="blueprint-grid" aria-hidden="true"></div>
-  <div class="spotlight-halo" aria-hidden="true"></div>
-  <div class="ambient-glow-purple top-[40%] -right-40" aria-hidden="true"></div>
-  <div class="ambient-glow-purple bottom-[15%] -left-40" aria-hidden="true"></div>
+  <!-- TOP ANNOUNCEMENT BANNER -->
+  <div class="bg-forest-dark text-white py-2 px-4 text-center text-xs font-display font-medium tracking-wide flex items-center justify-center gap-2">
+    <span class="inline-block w-2 h-2 rounded-full bg-yellow-accent animate-pulse"></span>
+    <span>🔥 Специальное предложение: <strong>14 дней бесплатно</strong> со всеми функциями без привязки карты</span>
+    <a href="https://t.me/zapishis_app_bot" target="_blank" class="underline hover:text-yellow-accent ml-1 font-semibold">Попробовать →</a>
+  </div>
 
-  <!-- GLOBAL UTILITY NAVIGATION (APPLE & AUTHKIT HYBRID) -->
-  <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-2xl bg-canvas/85 border-b border-white/[0.08] transition-all duration-300" id="navbar">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between">
+  <!-- NAVIGATION NAVBAR -->
+  <header class="sticky top-0 left-0 right-0 z-50 backdrop-blur-md bg-sand/90 border-b border-border-subtle transition-all duration-300" id="navbar">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
       
-      <!-- Brand Wordmark -->
-      <a href="#hero" class="flex items-center gap-2.5 sm:gap-3 group">
-        <div class="w-7 h-7 sm:w-8 h-8 rounded-full bg-gradient-to-tr from-electric-blue to-void-violet flex items-center justify-center shadow-lg shadow-electric-blue/30 group-hover:scale-105 transition-transform">
-          <i data-lucide="sparkles" class="w-3.5 h-3.5 sm:w-4 h-4 text-white"></i>
+      <!-- Brand Logo -->
+      <a href="#hero" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-2xl bg-forest-dark text-white flex items-center justify-center shadow-md shadow-forest-dark/15 group-hover:scale-105 transition-transform">
+          <i data-lucide="sparkles" class="w-5 h-5 text-yellow-accent"></i>
         </div>
-        <div class="flex items-center gap-2">
-          <span class="font-display font-semibold text-base sm:text-lg tracking-tight text-white">SlotBot</span>
-          <span class="text-[9px] sm:text-[10px] font-mono uppercase px-2 py-0.5 rounded-full bg-white/[0.06] text-moon-mist border border-white/[0.1]">Core v2.4</span>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <span class="font-display font-extrabold text-xl tracking-tight text-forest-dark">SlotBot</span>
+            <span class="text-[10px] font-display font-bold uppercase px-2 py-0.5 rounded-full bg-mint text-forest-dark border border-mint-accent/20">Telegram</span>
+          </div>
+          <span class="text-[11px] text-text-secondary">онлайн-запись клиентов</span>
         </div>
       </a>
 
       <!-- Desktop Navigation Links -->
-      <nav class="hidden md:flex items-center gap-6 lg:gap-7 text-xs font-mono uppercase tracking-wider text-fog-veil">
-        <a href="#metrics" class="hover:text-white transition-colors">Метрики</a>
-        <a href="#architecture" class="hover:text-white transition-colors">Технологии</a>
-        <a href="#niches" class="hover:text-white transition-colors">7 Направлений</a>
-        <a href="#demo" class="hover:text-white transition-colors flex items-center gap-1.5 text-electric-blue font-semibold">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-glow animate-ping"></span>
-          Live Demo
+      <nav class="hidden md:flex items-center gap-7 text-sm font-display font-semibold text-text-secondary">
+        <a href="#niches" class="hover:text-forest-dark transition-colors">Для кого (7 сфер)</a>
+        <a href="#demo" class="hover:text-forest-dark transition-colors flex items-center gap-1.5 text-forest-dark">
+          <span class="w-2 h-2 rounded-full bg-mint-accent animate-pulse"></span>
+          Интерактивный демо
         </a>
-        <a href="#comparison" class="hover:text-white transition-colors">Было / Стало</a>
-        <a href="#pricing" class="hover:text-white transition-colors">Тариф</a>
+        <a href="#comparison" class="hover:text-forest-dark transition-colors">Было / Стало</a>
+        <a href="#calculator" class="hover:text-forest-dark transition-colors">Калькулятор</a>
+        <a href="#pricing" class="hover:text-forest-dark transition-colors">Тарифы</a>
+        <a href="#faq" class="hover:text-forest-dark transition-colors">FAQ</a>
       </nav>
 
-      <!-- Action Button -->
-      <div class="flex items-center gap-2 sm:gap-3">
-        <a href="https://t.me/zapishis_app_bot" target="_blank" rel="noopener noreferrer" class="btn-ghost-pill text-xs py-1.5 px-3.5 sm:py-2 sm:px-4 flex items-center gap-2 hover:border-electric-blue/50">
-          <i data-lucide="send" class="w-3.5 h-3.5 text-electric-blue"></i>
-          <span class="hidden xs:inline">Запустить бота</span>
-          <span class="xs:hidden">Бот</span>
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-3">
+        <a href="https://t.me/zapishis_app_bot" target="_blank" rel="noopener noreferrer" class="btn-zen-primary hidden sm:inline-flex text-xs py-2.5 px-5">
+          <i data-lucide="send" class="w-3.5 h-3.5 text-yellow-accent"></i>
+          <span>Запустить бота</span>
         </a>
-        <button id="mobileMenuBtn" class="md:hidden p-2 text-fog-veil hover:text-white" aria-label="Меню">
+        <button id="mobileMenuBtn" class="md:hidden p-2.5 rounded-xl bg-white border border-border-subtle text-forest-dark hover:bg-sand-light" aria-label="Меню">
           <i data-lucide="menu" class="w-5 h-5"></i>
         </button>
       </div>
 
     </div>
 
-    <!-- Mobile Drawer -->
-    <div id="mobileMenu" class="hidden md:hidden border-b border-white/[0.08] bg-graphite/98 backdrop-blur-2xl px-5 py-4 space-y-3 font-mono text-xs uppercase tracking-wider">
-      <a href="#metrics" class="mobile-nav-link block py-2 text-fog-veil hover:text-white">Метрики</a>
-      <a href="#architecture" class="mobile-nav-link block py-2 text-fog-veil hover:text-white">Технологии</a>
-      <a href="#niches" class="mobile-nav-link block py-2 text-fog-veil hover:text-white">7 Направлений</a>
-      <a href="#demo" class="mobile-nav-link block py-2 text-electric-blue font-semibold flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-emerald-glow"></span> Live Demo
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileMenu" class="hidden md:hidden border-b border-border-subtle bg-sand/98 px-6 py-5 space-y-3 font-display font-semibold text-sm">
+      <a href="#niches" class="mobile-nav-link block py-2 text-text-secondary hover:text-forest-dark">Для кого (7 сфер)</a>
+      <a href="#demo" class="mobile-nav-link block py-2 text-forest-dark font-bold flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-mint-accent"></span> Интерактивный демо-симулятор
       </a>
-      <a href="#comparison" class="mobile-nav-link block py-2 text-fog-veil hover:text-white">Было / Стало</a>
-      <a href="#pricing" class="mobile-nav-link block py-2 text-fog-veil hover:text-white">Тариф</a>
-      <a href="https://t.me/zapishis_app_bot" target="_blank" class="block pt-2 text-center btn-keynote-primary text-xs">
-        Открыть @zapishis_app_bot
-      </a>
+      <a href="#comparison" class="mobile-nav-link block py-2 text-text-secondary hover:text-forest-dark">Было vs Стало</a>
+      <a href="#calculator" class="mobile-nav-link block py-2 text-text-secondary hover:text-forest-dark">Калькулятор выгоды</a>
+      <a href="#pricing" class="mobile-nav-link block py-2 text-text-secondary hover:text-forest-dark">Тарифы</a>
+      <a href="#faq" class="mobile-nav-link block py-2 text-text-secondary hover:text-forest-dark">Вопросы и ответы</a>
+      <div class="pt-2">
+        <a href="https://t.me/zapishis_app_bot" target="_blank" class="btn-zen-coral w-full text-center text-sm py-3 justify-center">
+          <i data-lucide="send" class="w-4 h-4"></i>
+          <span>Открыть @zapishis_app_bot</span>
+        </a>
+      </div>
     </div>
   </header>
 
-  <main class="relative z-10">
+  <main>
     
-    <!-- STAGE 1: KEYNOTE HERO REVEAL -->
-    <section id="hero" class="pt-24 pb-14 sm:pt-36 sm:pb-20 md:pt-44 md:pb-28 text-center relative overflow-hidden">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 space-y-6 sm:space-y-8">
-        
-        <!-- Eyebrow with hairline rules -->
-        <div class="eyebrow-container justify-center">
-          <div class="eyebrow-line"></div>
-          <span class="eyebrow-label">Next-Gen Telegram Scheduling</span>
-          <div class="eyebrow-line right"></div>
-        </div>
-
-        <!-- Exhibition Display Headline -->
-        <h1 class="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.12] sm:leading-[1.08] text-ice-highlight max-w-3xl mx-auto">
-          Онлайн-запись клиентов нового поколения.
-        </h1>
-
-        <!-- Subtitle -->
-        <p class="text-fog-veil text-sm sm:text-lg md:text-xl max-w-2xl mx-auto font-normal leading-relaxed">
-          Автономный сервис внутри Telegram: умный расчет свободных окон, мгновенные подтверждения и нулевые потери клиентов из-за забывчивости.
-        </p>
-
-        <!-- CTA Cluster -->
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-2 sm:pt-4">
-          <a href="https://t.me/zapishis_app_bot" target="_blank" rel="noopener noreferrer" class="btn-keynote-primary w-full sm:w-auto">
-            <i data-lucide="send" class="w-4 h-4"></i>
-            <span>Запустить @zapishis_app_bot</span>
-          </a>
-          <a href="#demo" class="btn-ghost-pill w-full sm:w-auto">
-            <i data-lucide="play-circle" class="w-4 h-4 text-electric-blue"></i>
-            <span>Интерактивная презентация ↓</span>
-          </a>
-        </div>
-
-        <!-- Hardware Specs Strip -->
-        <div class="pt-6 sm:pt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-[11px] sm:text-xs font-mono text-fog-veil">
-          <div class="flex items-center gap-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-glow"></span>
-            <span>14 ДНЕЙ ТЕСТ-ДРАЙВ</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-electric-blue"></span>
-            <span>БЕЗ ПРИВЯЗКИ КАРТЫ</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-void-violet"></span>
-            <span>НАСТРОЙКА ЗА 3 МИНУТЫ</span>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- STAGE 2: HARDWARE METRIC PLINTHS (APPLE KEYNOTE SPECS) -->
-    <section id="metrics" class="py-12 sm:py-16 md:py-24 border-t border-white/[0.08] relative">
+    <!-- STAGE 1: HERO SECTION -->
+    <section id="hero" class="pt-10 pb-16 sm:pt-16 sm:pb-24 overflow-hidden relative">
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
         
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+        <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           
-          <!-- Metric 1 -->
-          <div class="metric-plinth space-y-2 sm:space-y-3">
-            <div class="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-fog-veil">Доходимость</div>
-            <div class="font-display text-3xl sm:text-5xl font-semibold text-white tracking-tight">0%</div>
-            <div class="text-xs text-moon-mist leading-relaxed">
-              Сгоревших окон благодаря автонапоминаниям за 24 ч и 2 ч.
-            </div>
-          </div>
-
-          <!-- Metric 2 -->
-          <div class="metric-plinth space-y-2 sm:space-y-3">
-            <div class="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-fog-veil">Скорость записи</div>
-            <div class="font-display text-3xl sm:text-5xl font-semibold text-electric-blue tracking-tight">20 сек</div>
-            <div class="text-xs text-moon-mist leading-relaxed">
-              Клиент сам выбирает процедуру и слот в 3 клика 24/7.
-            </div>
-          </div>
-
-          <!-- Metric 3 -->
-          <div class="metric-plinth space-y-2 sm:space-y-3">
-            <div class="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-fog-veil">Сэкономлено времени</div>
-            <div class="font-display text-3xl sm:text-5xl font-semibold text-white tracking-tight">35+ ч</div>
-            <div class="text-xs text-moon-mist leading-relaxed">
-              Свободы от рутины согласования дат и пустых переписок в месяц.
-            </div>
-          </div>
-
-          <!-- Metric 4 -->
-          <div class="metric-plinth space-y-2 sm:space-y-3">
-            <div class="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-fog-veil">Интеграция</div>
-            <div class="font-display text-3xl sm:text-5xl font-semibold text-emerald-glow tracking-tight">100%</div>
-            <div class="text-xs text-moon-mist leading-relaxed">
-              Работает в Telegram. Без скачивания лишних приложений.
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- STAGE 3: HIGH-TECH ARCHITECTURE & UNDER THE HOOD (AUTHKIT BLUEPRINT) -->
-    <section id="architecture" class="py-14 sm:py-20 md:py-28 border-t border-white/[0.08] relative">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        
-        <div class="text-center max-w-2xl mx-auto space-y-2 sm:space-y-3 mb-10 sm:mb-16">
-          <div class="eyebrow-container justify-center">
-            <div class="eyebrow-line"></div>
-            <span class="eyebrow-label">Engine Architecture</span>
-            <div class="eyebrow-line right"></div>
-          </div>
-          <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-semibold text-ice-highlight">
-            Высокие технологии расписания
-          </h2>
-          <p class="text-fog-veil text-xs sm:text-sm md:text-base">
-            Отказоустойчивый стек, разработанный для мгновенной обработки слотов без конфликтов:
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          
-          <!-- Tech Component 1 -->
-          <div class="keynote-card p-5 sm:p-6 space-y-3 sm:space-y-4">
-            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-electric-blue/10 border border-electric-blue/20 flex items-center justify-center text-electric-blue">
-              <i data-lucide="cpu" class="w-4 h-4 sm:w-5 sm:h-5"></i>
-            </div>
-            <div class="space-y-1">
-              <div class="font-mono text-[10px] sm:text-xs text-fog-veil uppercase tracking-wider">Subsystem 01</div>
-              <h3 class="font-display font-semibold text-sm sm:text-base text-white">Aiogram 3 Core</h3>
-            </div>
-            <p class="text-xs text-moon-mist leading-relaxed">
-              Асинхронный движок бота с временем отклика менее 80 мс. Моментальная реакция на клики.
-            </p>
-          </div>
-
-          <!-- Tech Component 2 -->
-          <div class="keynote-card p-5 sm:p-6 space-y-3 sm:space-y-4">
-            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-emerald-glow/10 border border-emerald-glow/20 flex items-center justify-center text-emerald-glow">
-              <i data-lucide="calendar-range" class="w-4 h-4 sm:w-5 sm:h-5"></i>
-            </div>
-            <div class="space-y-1">
-              <div class="font-mono text-[10px] sm:text-xs text-fog-veil uppercase tracking-wider">Subsystem 02</div>
-              <h3 class="font-display font-semibold text-sm sm:text-base text-white">Dynamic Slot Matrix</h3>
-            </div>
-            <p class="text-xs text-moon-mist leading-relaxed">
-              Интервальная арифметика с автоматическим вычетом пауз, обедов, отпусков и длительности процедур.
-            </p>
-          </div>
-
-          <!-- Tech Component 3 -->
-          <div class="keynote-card p-5 sm:p-6 space-y-3 sm:space-y-4">
-            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-void-violet/15 border border-void-violet/30 flex items-center justify-center text-void-violet">
-              <i data-lucide="bell-ring" class="w-4 h-4 sm:w-5 sm:h-5"></i>
-            </div>
-            <div class="space-y-1">
-              <div class="font-mono text-[10px] sm:text-xs text-fog-veil uppercase tracking-wider">Subsystem 03</div>
-              <h3 class="font-display font-semibold text-sm sm:text-base text-white">Worker Queue</h3>
-            </div>
-            <p class="text-xs text-moon-mist leading-relaxed">
-              Фоновый процессор автонапоминаний. Доставляет пуши клиенту за 24 ч и за 2 ч до визита.
-            </p>
-          </div>
-
-          <!-- Tech Component 4 -->
-          <div class="keynote-card p-5 sm:p-6 space-y-3 sm:space-y-4">
-            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-frost-glow">
-              <i data-lucide="shield-check" class="w-4 h-4 sm:w-5 sm:h-5"></i>
-            </div>
-            <div class="space-y-1">
-              <div class="font-mono text-[10px] sm:text-xs text-fog-veil uppercase tracking-wider">Subsystem 04</div>
-              <h3 class="font-display font-semibold text-sm sm:text-base text-white">Multi-Tenant Isolation</h3>
-            </div>
-            <p class="text-xs text-moon-mist leading-relaxed">
-              Полная изоляция клиентских баз и настроек каждого мастера на уровне БД. Приватность данных.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- STAGE 4: 7 TARGET NICHES EXHIBITION PLINTH -->
-    <section id="niches" class="py-14 sm:py-20 md:py-28 border-t border-white/[0.08] relative">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        
-        <div class="text-center max-w-2xl mx-auto space-y-2 sm:space-y-3 mb-8 sm:mb-12">
-          <div class="eyebrow-container justify-center">
-            <div class="eyebrow-line"></div>
-            <span class="eyebrow-label">Adaptive Domain System</span>
-            <div class="eyebrow-line right"></div>
-          </div>
-          <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-semibold text-ice-highlight">
-            Адаптация под 7 направлений
-          </h2>
-          <p class="text-fog-veil text-xs sm:text-sm md:text-base">
-            Выберите вашу специализацию для просмотра конфигурации сервиса:
-          </p>
-        </div>
-
-        <!-- Segmented Control Bar with smooth mobile scroll -->
-        <div class="overflow-x-auto no-scrollbar py-1 mb-8 sm:mb-12">
-          <div class="flex items-center gap-1.5 p-1 rounded-full bg-graphite border border-white/[0.08] w-max sm:mx-auto max-w-full" id="nicheTabsContainer">
-            <!-- Populated by JS -->
-          </div>
-        </div>
-
-        <!-- Dynamic Exhibition Stage Card -->
-        <div class="keynote-card p-5 sm:p-8 md:p-10 border border-white/[0.12] transition-all duration-300" id="nicheContentCard">
-          <!-- Populated by JS -->
-        </div>
-
-      </div>
-    </section>
-
-    <!-- STAGE 5: LIVE HARDWARE SIMULATOR STAGE (APPLE MIDNIGHT STAGE) -->
-    <section id="demo" class="py-14 sm:py-20 md:py-28 border-t border-white/[0.08] relative overflow-hidden bg-gradient-to-b from-canvas via-graphite/40 to-canvas">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        
-        <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          
-          <!-- Left Control Panel & Keynote Story -->
-          <div class="lg:col-span-6 space-y-6 sm:space-y-8">
+          <!-- Left Content -->
+          <div class="lg:col-span-7 space-y-6 sm:space-y-8 text-center lg:text-left">
             
-            <div class="space-y-2 sm:space-y-3 text-center lg:text-left">
-              <div class="eyebrow-container justify-center lg:justify-start">
-                <div class="eyebrow-line"></div>
-                <span class="eyebrow-label">Hardware Interactive Terminal</span>
-                <div class="eyebrow-line right"></div>
+            <!-- Eyebrow Pill -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cream border border-forest-dark/10 text-xs font-display font-bold text-forest-dark">
+              <span class="w-2 h-2 rounded-full bg-coral-accent"></span>
+              <span>Личный бот онлайн-записи прямо в Telegram</span>
+            </div>
+
+            <!-- Headline -->
+            <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-forest-dark leading-[1.15]">
+              Клиенты записываются <span class="underline-coral">сами 24/7</span>.<br />
+              Вы занимаетесь делом, а не переписками.
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="text-text-secondary text-base sm:text-lg font-normal leading-relaxed max-w-xl mx-auto lg:mx-0">
+              Умный бот для бьюти-мастеров, психологов, тренеров, репетиторов и экспертов. Автоматически выдаёт свободные окна, принимает запись и напоминает клиенту за 24 ч и 2 ч.
+            </p>
+
+            <!-- Actions -->
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2">
+              <a href="https://t.me/zapishis_app_bot" target="_blank" rel="noopener noreferrer" class="btn-zen-coral w-full sm:w-auto shadow-lg hover:scale-[1.02]">
+                <i data-lucide="send" class="w-4 h-4"></i>
+                <span>Попробовать бесплатно 14 дней</span>
+              </a>
+              <a href="#demo" class="btn-zen-secondary w-full sm:w-auto">
+                <i data-lucide="play-circle" class="w-4 h-4 text-forest-dark"></i>
+                <span>Протестировать симулятор</span>
+              </a>
+            </div>
+
+            <!-- Trust Features -->
+            <div class="pt-4 grid grid-cols-3 gap-2 sm:gap-4 max-w-md mx-auto lg:mx-0 text-left">
+              <div class="p-2.5 rounded-xl bg-white border border-border-card flex items-center gap-2 shadow-sm">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-mint-accent shrink-0"></i>
+                <span class="text-xs font-display font-semibold text-text-secondary">14 дней 0 ₽</span>
               </div>
-              <h2 class="font-display text-2xl sm:text-4xl md:text-5xl font-semibold text-ice-highlight leading-tight">
-                Интерактивный тест-драйв в реальном времени
+              <div class="p-2.5 rounded-xl bg-white border border-border-card flex items-center gap-2 shadow-sm">
+                <i data-lucide="credit-card" class="w-4 h-4 text-forest-dark shrink-0"></i>
+                <span class="text-xs font-display font-semibold text-text-secondary">Без карты</span>
+              </div>
+              <div class="p-2.5 rounded-xl bg-white border border-border-card flex items-center gap-2 shadow-sm">
+                <i data-lucide="zap" class="w-4 h-4 text-yellow-accent shrink-0"></i>
+                <span class="text-xs font-display font-semibold text-text-secondary">Старт 3 мин</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Hero Showcase Card (Zendesk Style with Starburst) -->
+          <div class="lg:col-span-5 flex justify-center">
+            <div class="relative w-full max-w-md">
+              
+              <!-- Starburst Super Badge -->
+              <div class="starburst-badge z-20">
+                14 дней<br />0 ₽
+              </div>
+
+              <!-- Main Hero White Card -->
+              <div class="zen-card p-6 sm:p-8 space-y-5 relative">
+                
+                <div class="flex items-center justify-between pb-4 border-b border-border-subtle">
+                  <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-2xl bg-mint text-forest-dark flex items-center justify-center font-bold text-lg">
+                      💅
+                    </div>
+                    <div>
+                      <div class="font-display font-bold text-sm text-forest-dark flex items-center gap-1.5">
+                        SlotBot • Live
+                        <span class="w-2 h-2 rounded-full bg-mint-accent"></span>
+                      </div>
+                      <div class="text-xs text-text-secondary">Онлайн-запись активна</div>
+                    </div>
+                  </div>
+                  <span class="px-2.5 py-1 rounded-full bg-mint text-forest-dark font-display font-bold text-xs">
+                    +100% авто
+                  </span>
+                </div>
+
+                <!-- Simulation Comparison Snippets -->
+                <div class="space-y-3 font-sans text-xs sm:text-sm">
+                  <div class="p-3.5 rounded-2xl bg-rose border border-coral-accent/15 flex gap-3 items-start">
+                    <span class="p-1 rounded-lg bg-white text-coral-accent font-bold shrink-0">✕</span>
+                    <div>
+                      <div class="font-display font-bold text-forest-dark">Раньше: 35 минут в переписке</div>
+                      <div class="text-text-secondary text-xs mt-0.5">«А когда свободно?», «Ой, в 14:00 не могу», «Перенесите пожалуйста»</div>
+                    </div>
+                  </div>
+
+                  <div class="p-3.5 rounded-2xl bg-mint border border-mint-accent/20 flex gap-3 items-start">
+                    <span class="p-1 rounded-lg bg-white text-mint-accent font-bold shrink-0">✓</span>
+                    <div>
+                      <div class="font-display font-bold text-forest-dark">С ботом: 20 секунд в 3 клика</div>
+                      <div class="text-text-secondary text-xs mt-0.5">Клиент сам выбрал процедуру, день и слот. Вы получили готовый пуш.</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Hero Stats Numbers -->
+                <div class="grid grid-cols-2 gap-3 pt-2">
+                  <div class="p-3.5 rounded-2xl bg-sand-light border border-border-card text-center">
+                    <div class="font-display text-2xl font-extrabold text-forest-dark">35+ часов</div>
+                    <div class="text-[11px] font-medium text-text-secondary">свободы в месяц</div>
+                  </div>
+                  <div class="p-3.5 rounded-2xl bg-sand-light border border-border-card text-center">
+                    <div class="font-display text-2xl font-extrabold text-mint-accent">0 окон</div>
+                    <div class="text-[11px] font-medium text-text-secondary">не сгорает из-за забывчивости</div>
+                  </div>
+                </div>
+
+                <!-- Action Button in Card -->
+                <a href="#demo" class="block text-center w-full py-3 rounded-xl bg-forest-dark hover:bg-forest-deep text-xs font-display font-bold text-white transition-all shadow">
+                  Попробовать демо-запись ниже ↓
+                </a>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- STAGE 2: METRICS & HIGHLIGHTS -->
+    <section id="metrics" class="py-12 sm:py-16 bg-cream/40 border-y border-border-subtle">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          
+          <div class="zen-card p-5 sm:p-6 space-y-2 text-center sm:text-left">
+            <div class="text-xs font-display font-bold uppercase tracking-wider text-coral-accent">Доходимость</div>
+            <div class="font-display text-3xl sm:text-4xl font-extrabold text-forest-dark">98%</div>
+            <div class="text-xs text-text-secondary leading-relaxed">
+              Клиенты не забывают благодаря автонапоминаниям за 24 ч и 2 ч.
+            </div>
+          </div>
+
+          <div class="zen-card p-5 sm:p-6 space-y-2 text-center sm:text-left">
+            <div class="text-xs font-display font-bold uppercase tracking-wider text-forest-dark">Скорость записи</div>
+            <div class="font-display text-3xl sm:text-4xl font-extrabold text-forest-dark">20 сек</div>
+            <div class="text-xs text-text-secondary leading-relaxed">
+              Клиент сам выбирает процедуру и слот в 3 клика в любое время суток.
+            </div>
+          </div>
+
+          <div class="zen-card p-5 sm:p-6 space-y-2 text-center sm:text-left">
+            <div class="text-xs font-display font-bold uppercase tracking-wider text-mint-accent">Экономия времени</div>
+            <div class="font-display text-3xl sm:text-4xl font-extrabold text-forest-dark">35+ ч</div>
+            <div class="text-xs text-text-secondary leading-relaxed">
+              Вы больше не отвлекаетесь на бесконечные переписки во время работы.
+            </div>
+          </div>
+
+          <div class="zen-card p-5 sm:p-6 space-y-2 text-center sm:text-left">
+            <div class="text-xs font-display font-bold uppercase tracking-wider text-forest-dark">Без приложений</div>
+            <div class="font-display text-3xl sm:text-4xl font-extrabold text-forest-dark">100%</div>
+            <div class="text-xs text-text-secondary leading-relaxed">
+              Работает прямо в Telegram, который уже есть у всех ваших клиентов.
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- STAGE 3: 7 TARGET NICHES (ДЛЯ КОГО ПОДХОДИТ) -->
+    <section id="niches" class="py-16 sm:py-24 relative">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        
+        <div class="text-center max-w-2xl mx-auto space-y-3 mb-10 sm:mb-14">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mint text-forest-dark font-display font-bold text-xs uppercase tracking-wider">
+            Целевая аудитория
+          </div>
+          <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-forest-dark">
+            Выберите <span class="underline-mint">вашу сферу</span> деятельности
+          </h2>
+          <p class="text-text-secondary text-sm sm:text-base">
+            Нажмите на свою нишу ниже, чтобы увидеть персональную конфигурацию сервиса, боли и выгоду:
+          </p>
+        </div>
+
+        <!-- Horizontal Scrollable Segmented Tabs -->
+        <div class="overflow-x-auto no-scrollbar py-2 mb-8 sm:mb-12 -mx-4 px-4 sm:mx-0">
+          <div class="flex items-center gap-2 w-max sm:mx-auto" id="nicheTabsContainer">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+
+        <!-- Dynamic Niche Showcase Card -->
+        <div class="zen-card p-6 sm:p-10 border-2 border-forest-dark/10 bg-white transition-all duration-300" id="nicheContentCard">
+          <!-- Populated via JS -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- STAGE 4: LIVE INTERACTIVE PHONE SIMULATOR -->
+    <section id="demo" class="py-16 sm:py-24 bg-sky/40 border-y border-border-subtle relative overflow-hidden">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        
+        <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          
+          <!-- Left Explanation & Mode Controls -->
+          <div class="lg:col-span-6 space-y-6 sm:space-y-8 text-center lg:text-left">
+            
+            <div class="space-y-3">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white text-forest-dark font-display font-bold text-xs uppercase tracking-wider border border-border-subtle">
+                Тест-драйв онлайн
+              </div>
+              <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-forest-dark leading-tight">
+                Попробуйте записаться <span class="underline-sky">прямо в телефоне</span>
               </h2>
-              <p class="text-fog-veil text-xs sm:text-sm md:text-base leading-relaxed">
-                Попробуйте интерфейс бота в смартфоне. Пройдите путь клиента от выбора услуги до подтверждения, затем переключитесь на экран мастера!
+              <p class="text-text-secondary text-sm sm:text-base leading-relaxed">
+                Кликайте по кнопкам в смартфоне справа! Пройдите путь клиента от выбора процедуры до подтверждения записи, а затем переключитесь на экран мастера!
               </p>
             </div>
 
-            <!-- Mode Selector -->
-            <div class="p-1.5 rounded-2xl bg-graphite border border-white/[0.08] flex items-center gap-2">
-              <button id="simModeClient" class="flex-1 py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl text-[11px] sm:text-xs font-mono uppercase tracking-wider font-semibold transition-all flex items-center justify-center gap-2 bg-electric-blue text-white shadow-lg">
-                <i data-lucide="user" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
-                <span>Клиент (Запись)</span>
+            <!-- Mode Switcher -->
+            <div class="p-1.5 rounded-2xl bg-white border border-border-subtle flex items-center gap-2 shadow-sm max-w-md mx-auto lg:mx-0">
+              <button id="simModeClient" class="flex-1 py-3 px-4 rounded-xl font-display font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 bg-forest-dark text-white shadow">
+                <i data-lucide="user" class="w-4 h-4"></i>
+                <span>Экран клиента (Запись)</span>
               </button>
-              <button id="simModeMaster" class="flex-1 py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl text-[11px] sm:text-xs font-mono uppercase tracking-wider font-semibold transition-all flex items-center justify-center gap-2 text-fog-veil hover:text-white hover:bg-white/[0.04]">
-                <i data-lucide="shield-check" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
+              <button id="simModeMaster" class="flex-1 py-3 px-4 rounded-xl font-display font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 text-text-secondary hover:text-forest-dark hover:bg-sand-light">
+                <i data-lucide="shield-check" class="w-4 h-4"></i>
                 <span class="relative">
-                  Мастер (Cockpit)
-                  <span id="masterPushBadge" class="hidden absolute -top-1 -right-3 sm:-right-4 w-2 h-2 rounded-full bg-emerald-glow animate-ping"></span>
+                  Экран мастера
+                  <span id="masterPushBadge" class="hidden absolute -top-1 -right-3 w-2.5 h-2.5 rounded-full bg-coral-accent animate-ping"></span>
                 </span>
               </button>
             </div>
 
-            <!-- Guided Steps Specification -->
-            <div class="space-y-2.5 font-mono text-xs text-moon-mist">
-              <div class="p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] flex items-center gap-3">
-                <span class="text-electric-blue font-bold shrink-0">01</span>
-                <span>Нажмите в телефоне <strong class="text-white">«💅 Записаться на процедуру»</strong></span>
+            <!-- Steps Guideline -->
+            <div class="space-y-2.5 text-left max-w-md mx-auto lg:mx-0 font-display text-xs sm:text-sm">
+              <div class="p-3.5 rounded-xl bg-white border border-border-card flex items-center gap-3 shadow-sm">
+                <span class="w-6 h-6 rounded-full bg-forest-dark text-white flex items-center justify-center text-xs font-bold shrink-0">1</span>
+                <span class="text-text-primary">Нажмите в телефоне <strong>«💅 Записаться на процедуру»</strong></span>
               </div>
-              <div class="p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] flex items-center gap-3">
-                <span class="text-electric-blue font-bold shrink-0">02</span>
-                <span>Выберите услугу, дату и свободный временной слот</span>
+              <div class="p-3.5 rounded-xl bg-white border border-border-card flex items-center gap-3 shadow-sm">
+                <span class="w-6 h-6 rounded-full bg-forest-dark text-white flex items-center justify-center text-xs font-bold shrink-0">2</span>
+                <span class="text-text-primary">Выберите услугу, удобный день и свободное время</span>
               </div>
-              <div class="p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] flex items-center gap-3">
-                <span class="text-emerald-glow font-bold shrink-0">03</span>
-                <span>Переключитесь на <strong>«Мастер (Cockpit)»</strong> для моментального подтверждения</span>
+              <div class="p-3.5 rounded-xl bg-white border border-border-card flex items-center gap-3 shadow-sm">
+                <span class="w-6 h-6 rounded-full bg-mint-accent text-white flex items-center justify-center text-xs font-bold shrink-0">3</span>
+                <span class="text-text-primary">Переключитесь на <strong>«Экран мастера»</strong> и подтвердите бронь!</span>
               </div>
             </div>
 
             <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-1">
-              <button id="simResetBtn" class="btn-ghost-pill text-xs py-2 px-4">
+              <button id="simResetBtn" class="btn-zen-ghost text-xs py-2 px-4">
                 <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
-                <span>Сбросить симулятор</span>
+                <span>Сбросить диалог</span>
               </button>
-              <a href="https://t.me/zapishis_app_bot" target="_blank" class="text-xs font-mono text-electric-blue hover:underline">
+              <a href="https://t.me/zapishis_app_bot" target="_blank" class="text-xs font-display font-bold text-forest-dark hover:underline">
                 Открыть в Telegram →
               </a>
             </div>
 
           </div>
 
-          <!-- Right Hardware Phone Stage -->
+          <!-- Right Phone Mockup -->
           <div class="lg:col-span-6 flex justify-center w-full">
             
             <div class="hardware-phone">
               <div class="hardware-island"></div>
 
-              <!-- Telegram Header (Seamless top rounded) -->
+              <!-- Telegram Header Light -->
               <div class="phone-header flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                  <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-tr from-electric-blue to-void-violet flex items-center justify-center text-xs font-bold text-white shadow">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-accent to-forest-dark flex items-center justify-center text-xs font-bold text-white shadow">
                     💅
                   </div>
                   <div>
                     <div class="flex items-center gap-1">
-                      <span class="font-semibold text-[11px] sm:text-xs text-white truncate max-w-[170px]" id="phoneBotName">SlotBot | @zapishis_app_bot</span>
-                      <i data-lucide="badge-check" class="w-3 h-3 text-electric-blue shrink-0"></i>
+                      <span class="font-display font-bold text-xs text-forest-dark truncate max-w-[170px]" id="phoneBotName">SlotBot | @zapishis_app_bot</span>
+                      <i data-lucide="badge-check" class="w-3.5 h-3.5 text-blue-accent shrink-0"></i>
                     </div>
-                    <div class="text-[9px] sm:text-[10px] font-mono text-electric-blue" id="phoneBotStatus">бот онлайн-записи</div>
+                    <div class="text-[10px] text-mint-accent font-medium" id="phoneBotStatus">бот онлайн-записи • 24/7</div>
                   </div>
                 </div>
-                <button id="phoneQuickReset" title="Сбросить" class="text-fog-veil hover:text-white p-1">
+                <button id="phoneQuickReset" title="Сбросить" class="text-text-secondary hover:text-forest-dark p-1">
                   <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
                 </button>
               </div>
 
               <!-- Message Stream -->
-              <div class="flex-1 overflow-y-auto p-2.5 sm:p-3 space-y-2.5 font-sans text-xs select-none chat-messages" id="phoneChatBody">
-                <!-- Dynamically populated -->
+              <div class="flex-1 overflow-y-auto p-3 space-y-2.5 font-sans text-xs select-none chat-messages" id="phoneChatBody">
+                <!-- Dynamically populated via JS -->
               </div>
 
-              <!-- Interactive Controls Area (Seamless bottom rounded) -->
-              <div class="phone-footer space-y-1.5" id="phoneKeyboardArea">
-                <!-- Dynamically populated -->
+              <!-- Interactive Controls Area -->
+              <div class="phone-footer space-y-2" id="phoneKeyboardArea">
+                <!-- Dynamically populated via JS -->
               </div>
 
             </div>
@@ -512,80 +438,88 @@
       </div>
     </section>
 
-    <!-- STAGE 6: COMPARISON DECK (БЫЛО VS СТАЛО) -->
-    <section id="comparison" class="py-14 sm:py-20 md:py-28 border-t border-white/[0.08] relative">
+    <!-- STAGE 5: BEFORE VS AFTER (БЫЛО VS СТАЛО) -->
+    <section id="comparison" class="py-16 sm:py-24 relative">
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
         
-        <div class="text-center max-w-2xl mx-auto space-y-2 sm:space-y-3 mb-10 sm:mb-16">
-          <div class="eyebrow-container justify-center">
-            <div class="eyebrow-line"></div>
-            <span class="eyebrow-label">Transformation Matrix</span>
-            <div class="eyebrow-line right"></div>
+        <div class="text-center max-w-2xl mx-auto space-y-3 mb-12 sm:mb-16">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose text-coral-accent font-display font-bold text-xs uppercase tracking-wider">
+            Контраст
           </div>
-          <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-semibold text-ice-highlight">
-            До и после внедрения
+          <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-forest-dark">
+            Сколько сил вы <span class="underline-coral">теряете</span> без бота?
           </h2>
-          <p class="text-fog-veil text-xs sm:text-sm md:text-base">
-            Сравнение ручного согласования с автономной Telegram-системой:
+          <p class="text-text-secondary text-sm sm:text-base">
+            Сравните ежедневную рутину ручного согласования с автоматическим порядком:
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           
-          <!-- Legacy Card -->
-          <div class="keynote-card p-6 sm:p-8 border-rose-500/20 bg-gradient-to-b from-rose-950/10 to-transparent space-y-4 sm:space-y-6">
-            <div class="flex items-center justify-between pb-3 sm:pb-4 border-b border-white/[0.08]">
+          <!-- Before Card (Хаос) -->
+          <div class="zen-card p-6 sm:p-8 bg-rose/40 border-2 border-coral-accent/20 space-y-6">
+            <div class="flex items-center justify-between pb-4 border-b border-coral-accent/15">
               <div class="flex items-center gap-3">
-                <span class="font-mono text-xs px-2.5 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20">LEGACY</span>
-                <h3 class="font-display font-semibold text-lg sm:text-xl text-white">Ручной хаос</h3>
+                <div class="w-9 h-9 rounded-xl bg-white text-coral-accent font-bold flex items-center justify-center shadow-sm">
+                  ✕
+                </div>
+                <div>
+                  <span class="text-xs font-display font-bold uppercase text-coral-accent tracking-wider">Было раньше</span>
+                  <h3 class="font-display font-extrabold text-xl text-forest-dark">Рутина и хаос</h3>
+                </div>
               </div>
             </div>
 
-            <div class="space-y-3 text-xs sm:text-sm text-moon-mist">
+            <div class="space-y-4 text-xs sm:text-sm text-text-secondary">
               <div class="flex items-start gap-3">
-                <span class="text-rose-400 font-bold shrink-0">✕</span>
-                <span>Бесконечные диалоги «А в субботу можно?», пока вы заняты процедурой.</span>
+                <span class="text-coral-accent font-bold text-base shrink-0">✕</span>
+                <span><strong>Бесконечные переписки:</strong> «А в субботу можно? А в 15:00?». Вы отвлекаетесь от клиента посреди сложной процедуры.</span>
               </div>
               <div class="flex items-start gap-3">
-                <span class="text-rose-400 font-bold shrink-0">✕</span>
-                <span>Сгоревшие окна: клиент забыл и не пришёл — минус 3 000 – 6 000 ₽.</span>
+                <span class="text-coral-accent font-bold text-base shrink-0">✕</span>
+                <span><strong>Сгоревшие окна:</strong> Клиент забыл и не пришёл — окно сгорело, вы потеряли от 2 500 до 6 000 ₽ за 2 часа простоя.</span>
               </div>
               <div class="flex items-start gap-3">
-                <span class="text-rose-400 font-bold shrink-0">✕</span>
-                <span>Записи в блокнотах и заметках, накладки по времени и усталость.</span>
+                <span class="text-coral-accent font-bold text-base shrink-0">✕</span>
+                <span><strong>Блокноты и заметки:</strong> Забыли внести перенос, случайно записали двоих на одно время — постоянный стресс.</span>
               </div>
               <div class="flex items-start gap-3">
-                <span class="text-rose-400 font-bold shrink-0">✕</span>
-                <span>Потеря 30% клиентов из-за долгого ответа в мессенджерах.</span>
+                <span class="text-coral-accent font-bold text-base shrink-0">✕</span>
+                <span><strong>Потеря клиентов:</strong> Не успели ответить за 15 минут — клиент уже записался к конкуренту с онлайн-записью.</span>
               </div>
             </div>
           </div>
 
-          <!-- Next-Gen Card -->
-          <div class="keynote-card p-6 sm:p-8 border-electric-blue/30 bg-gradient-to-b from-electric-blue/10 to-transparent space-y-4 sm:space-y-6">
-            <div class="flex items-center justify-between pb-3 sm:pb-4 border-b border-white/[0.08]">
+          <!-- After Card (Порядок) -->
+          <div class="zen-card p-6 sm:p-8 bg-mint/40 border-2 border-mint-accent/30 space-y-6">
+            <div class="flex items-center justify-between pb-4 border-b border-mint-accent/20">
               <div class="flex items-center gap-3">
-                <span class="font-mono text-xs px-2.5 py-0.5 rounded bg-electric-blue/10 text-electric-blue border border-electric-blue/30">NEXT-GEN</span>
-                <h3 class="font-display font-semibold text-lg sm:text-xl text-white">SlotBot Engine</h3>
+                <div class="w-9 h-9 rounded-xl bg-white text-mint-accent font-bold flex items-center justify-center shadow-sm">
+                  ✓
+                </div>
+                <div>
+                  <span class="text-xs font-display font-bold uppercase text-mint-accent tracking-wider">С ботом SlotBot</span>
+                  <h3 class="font-display font-extrabold text-xl text-forest-dark">Полный порядок</h3>
+                </div>
               </div>
             </div>
 
-            <div class="space-y-3 text-xs sm:text-sm text-frost-glow">
+            <div class="space-y-4 text-xs sm:text-sm text-text-primary">
               <div class="flex items-start gap-3">
-                <span class="text-emerald-glow font-bold shrink-0">✓</span>
-                <span>Ссылка в шапке профиля: клиент сам бронирует слот за 20 секунд 24/7.</span>
+                <span class="text-mint-accent font-bold text-base shrink-0">✓</span>
+                <span><strong>Запись за 20 секунд 24/7:</strong> Ссылка в шапке профиля. Клиент видит свободные окна и записывается сам, даже ночью.</span>
               </div>
               <div class="flex items-start gap-3">
-                <span class="text-emerald-glow font-bold shrink-0">✓</span>
-                <span>Автонапоминания за 24 ч и 2 ч — 98% доходимости и 0 пустых окон.</span>
+                <span class="text-mint-accent font-bold text-base shrink-0">✓</span>
+                <span><strong>Автонапоминания за 24 ч и 2 ч:</strong> Бот вежливо напомнит клиенту в Telegram — доходимость возрастает до 98%.</span>
               </div>
               <div class="flex items-start gap-3">
-                <span class="text-emerald-glow font-bold shrink-0">✓</span>
-                <span>Всё расписание в одном окне Telegram с мгновенным подтверждением.</span>
+                <span class="text-mint-accent font-bold text-base shrink-0">✓</span>
+                <span><strong>Всё расписание в телефоне:</strong> Мгновенные пуш-уведомления с кнопками «Подтвердить» / «Отклонить» в 1 касание.</span>
               </div>
               <div class="flex items-start gap-3">
-                <span class="text-emerald-glow font-bold shrink-0">✓</span>
-                <span>Рассылка «горящих окон» по всей базе при внезапных отменах.</span>
+                <span class="text-mint-accent font-bold text-base shrink-0">✓</span>
+                <span><strong>Рассылка «горящих окон»:</strong> Кто-то отменил запись? В 1 клик отправьте сообщение всей клиентской базе и закройте окно.</span>
               </div>
             </div>
           </div>
@@ -595,98 +529,110 @@
       </div>
     </section>
 
-    <!-- STAGE 7: LIVE ROI CALCULATOR & SPECIFICATION -->
-    <section id="pricing" class="py-14 sm:py-20 md:py-28 border-t border-white/[0.08] relative">
+    <!-- STAGE 6: ROI CALCULATOR -->
+    <section id="calculator" class="py-16 sm:py-24 bg-cream/40 border-y border-border-subtle relative">
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
         
-        <div class="text-center max-w-2xl mx-auto space-y-2 sm:space-y-3 mb-10 sm:mb-16">
-          <div class="eyebrow-container justify-center">
-            <div class="eyebrow-line"></div>
-            <span class="eyebrow-label">Economics & Specifications</span>
-            <div class="eyebrow-line right"></div>
+        <div class="text-center max-w-2xl mx-auto space-y-3 mb-12 sm:mb-16">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white text-forest-dark font-display font-bold text-xs uppercase tracking-wider border border-border-subtle">
+            Калькулятор окупаемости
           </div>
-          <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-semibold text-ice-highlight">
-            Прозрачная окупаемость
+          <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-forest-dark">
+            Сколько вы <span class="underline-mint">сохраните и заработаете</span>?
           </h2>
-          <p class="text-fog-veil text-xs sm:text-sm md:text-base">
-            Одно предотвращённое сгоревшее окно окупает подписку на полгода вперёд.
+          <p class="text-text-secondary text-sm sm:text-base">
+            Одно спасённое от забывчивости окно окупает подписку на бота на несколько месяцев вперёд.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center max-w-5xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center max-w-5xl mx-auto">
           
-          <!-- ROI Calculator Left -->
-          <div class="lg:col-span-7 keynote-card p-6 sm:p-8 space-y-5 sm:space-y-7">
+          <!-- Sliders Left -->
+          <div class="lg:col-span-7 zen-card p-6 sm:p-8 space-y-6">
             
-            <div class="space-y-2 sm:space-y-3">
-              <div class="flex justify-between items-center text-xs font-mono">
-                <span class="text-fog-veil uppercase">Средний чек услуги:</span>
-                <span class="font-display text-sm sm:text-base font-semibold text-white" id="calcPriceDisplay">2 500 ₽</span>
+            <div class="space-y-3">
+              <div class="flex justify-between items-center text-sm font-display font-bold">
+                <span class="text-text-secondary">Средняя стоимость вашей услуги:</span>
+                <span class="text-xl text-forest-dark" id="calcPriceDisplay">2 500 ₽</span>
               </div>
               <input type="range" min="1000" max="10000" step="250" value="2500" id="calcPriceInput" />
+              <div class="flex justify-between text-[11px] text-text-muted font-medium">
+                <span>1 000 ₽</span>
+                <span>5 000 ₽</span>
+                <span>10 000 ₽</span>
+              </div>
             </div>
 
-            <div class="space-y-2 sm:space-y-3">
-              <div class="flex justify-between items-center text-xs font-mono">
-                <span class="text-fog-veil uppercase">Клиентов в неделю:</span>
-                <span class="font-display text-sm sm:text-base font-semibold text-white" id="calcClientsDisplay">15 чел.</span>
+            <div class="space-y-3">
+              <div class="flex justify-between items-center text-sm font-display font-bold">
+                <span class="text-text-secondary">Клиентов в неделю:</span>
+                <span class="text-xl text-forest-dark" id="calcClientsDisplay">15 чел.</span>
               </div>
               <input type="range" min="3" max="50" step="1" value="15" id="calcClientsInput" />
+              <div class="flex justify-between text-[11px] text-text-muted font-medium">
+                <span>3 чел.</span>
+                <span>25 чел.</span>
+                <span>50 чел.</span>
+              </div>
             </div>
 
-            <div class="grid grid-cols-2 gap-3 sm:gap-4 pt-3 sm:pt-4 border-t border-white/[0.08]">
-              <div class="space-y-1">
-                <div class="text-[10px] sm:text-[11px] font-mono text-fog-veil uppercase">Сохранённая выручка:</div>
-                <div class="font-display text-xl sm:text-2xl font-bold text-emerald-glow" id="calcSavedMoney">+7 500 ₽</div>
-                <div class="text-[10px] text-fog-veil">в месяц на автонапоминаниях</div>
+            <div class="grid grid-cols-2 gap-4 pt-4 border-t border-border-subtle">
+              <div class="p-3.5 rounded-xl bg-mint/50 border border-mint-accent/20">
+                <div class="text-[11px] font-display font-bold text-text-secondary uppercase">Сохранённая выручка:</div>
+                <div class="font-display text-2xl font-extrabold text-forest-dark mt-1" id="calcSavedMoney">+7 500 ₽</div>
+                <div class="text-[11px] text-text-secondary">в месяц на автонапоминаниях</div>
               </div>
-              <div class="space-y-1">
-                <div class="text-[10px] sm:text-[11px] font-mono text-fog-veil uppercase">Свободное время:</div>
-                <div class="font-display text-xl sm:text-2xl font-bold text-electric-blue" id="calcSavedHours">22 часа</div>
-                <div class="text-[10px] text-fog-veil">сэкономлено на переписках</div>
+              <div class="p-3.5 rounded-xl bg-sky/50 border border-blue-accent/20">
+                <div class="text-[11px] font-display font-bold text-text-secondary uppercase">Сэкономлено времени:</div>
+                <div class="font-display text-2xl font-extrabold text-forest-dark mt-1" id="calcSavedHours">22 часа</div>
+                <div class="text-[11px] text-text-secondary">в месяц на переписках</div>
               </div>
             </div>
 
           </div>
 
-          <!-- Pricing Tier Right -->
-          <div class="lg:col-span-5 keynote-card p-6 sm:p-8 border-electric-blue/30 space-y-5 sm:space-y-6 relative overflow-hidden bg-gradient-to-b from-[#121824] to-canvas">
+          <!-- Pricing & CTA Card Right -->
+          <div class="lg:col-span-5 zen-card p-6 sm:p-8 bg-forest-dark text-white space-y-6 relative overflow-hidden shadow-xl">
             
-            <div class="flex justify-between items-start pb-3 sm:pb-4 border-b border-white/[0.08]">
+            <div class="flex justify-between items-start pb-4 border-b border-white/10">
               <div>
-                <span class="font-mono text-[9px] sm:text-[10px] uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-glow/20 text-emerald-glow border border-emerald-glow/30">
-                  14 ДНЕЙ БЕСПЛАТНО
+                <span class="font-display font-bold text-[11px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-coral-accent text-white">
+                  🔥 14 ДНЕЙ 0 ₽
                 </span>
-                <h3 class="font-display font-semibold text-xl sm:text-2xl text-white mt-1.5 sm:mt-2">Тариф «ПРО»</h3>
+                <h3 class="font-display font-extrabold text-2xl text-white mt-2">Тариф «ПРО»</h3>
               </div>
               <div class="text-right">
-                <div class="text-xs font-mono text-fog-veil line-through">990 ₽</div>
-                <div class="font-display text-2xl sm:text-3xl font-bold text-ice-highlight">590 ₽<span class="text-xs font-normal text-fog-veil">/мес</span></div>
+                <div class="text-xs text-white/50 line-through">990 ₽/мес</div>
+                <div class="font-display text-3xl font-extrabold text-yellow-accent">590 ₽<span class="text-xs font-normal text-white/70">/мес</span></div>
               </div>
             </div>
 
-            <div class="space-y-2.5 sm:space-y-3 text-xs text-moon-mist">
+            <div class="space-y-3 text-xs sm:text-sm text-white/90">
               <div class="flex items-center gap-2.5">
-                <i data-lucide="check" class="w-4 h-4 text-emerald-glow shrink-0"></i>
-                <span>Онлайн-запись клиентов 24/7 без лимитов</span>
+                <i data-lucide="check" class="w-4 h-4 text-mint-accent shrink-0 font-bold"></i>
+                <span>Онлайн-запись клиентов 24/7 без ограничений</span>
               </div>
               <div class="flex items-center gap-2.5">
-                <i data-lucide="check" class="w-4 h-4 text-emerald-glow shrink-0"></i>
+                <i data-lucide="check" class="w-4 h-4 text-mint-accent shrink-0 font-bold"></i>
                 <span>Автонапоминания клиентам за 24 ч и 2 ч</span>
               </div>
               <div class="flex items-center gap-2.5">
-                <i data-lucide="check" class="w-4 h-4 text-emerald-glow shrink-0"></i>
+                <i data-lucide="check" class="w-4 h-4 text-mint-accent shrink-0 font-bold"></i>
                 <span>Рассылка «горящих окон» при отменах</span>
               </div>
               <div class="flex items-center gap-2.5">
-                <i data-lucide="check" class="w-4 h-4 text-emerald-glow shrink-0"></i>
-                <span>Чёрный список и галерея работ в боте</span>
+                <i data-lucide="check" class="w-4 h-4 text-mint-accent shrink-0 font-bold"></i>
+                <span>Чёрный список и фото-галерея работ</span>
               </div>
             </div>
 
-            <a href="https://t.me/zapishis_app_bot" target="_blank" rel="noopener noreferrer" class="btn-keynote-primary w-full text-center text-xs sm:text-sm">
+            <a href="https://t.me/zapishis_app_bot" target="_blank" rel="noopener noreferrer" class="btn-zen-coral w-full text-center text-sm font-bold py-3.5 justify-center shadow-lg">
               <span>Активировать 14 дней бесплатно</span>
             </a>
+
+            <div class="text-[11px] text-center text-white/60">
+              Без привязки карты • Отмена в любой момент
+            </div>
 
           </div>
 
@@ -695,60 +641,58 @@
       </div>
     </section>
 
-    <!-- STAGE 8: FAQ ACCORDION -->
-    <section id="faq" class="py-14 sm:py-20 md:py-28 border-t border-white/[0.08] relative">
+    <!-- STAGE 7: FAQ ACCORDION -->
+    <section id="faq" class="py-16 sm:py-24 relative">
       <div class="max-w-3xl mx-auto px-4 sm:px-6">
         
-        <div class="text-center space-y-2 sm:space-y-3 mb-10 sm:mb-14">
-          <div class="eyebrow-container justify-center">
-            <div class="eyebrow-line"></div>
-            <span class="eyebrow-label">FAQ Specification</span>
-            <div class="eyebrow-line right"></div>
+        <div class="text-center space-y-3 mb-12 sm:mb-16">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sand-light text-forest-dark font-display font-bold text-xs uppercase tracking-wider border border-border-subtle">
+            FAQ
           </div>
-          <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-semibold text-ice-highlight">
+          <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-forest-dark">
             Часто задаваемые вопросы
           </h2>
         </div>
 
         <div class="space-y-3" id="faqAccordion">
           
-          <div class="faq-item keynote-card overflow-hidden">
-            <button class="faq-toggle w-full p-4 sm:p-5 text-left flex items-center justify-between gap-3 font-semibold text-white hover:text-electric-blue transition-colors text-xs sm:text-sm">
-              <span>Нужно ли клиентам скачивать специальное приложение?</span>
-              <i data-lucide="chevron-down" class="faq-chevron w-4 h-4 text-fog-veil transition-transform shrink-0"></i>
+          <div class="faq-item zen-card overflow-hidden">
+            <button class="faq-toggle w-full p-5 text-left flex items-center justify-between gap-3 font-display font-bold text-forest-dark hover:text-coral-accent transition-colors text-sm sm:text-base">
+              <span>Нужно ли моим клиентам устанавливать специальное приложение?</span>
+              <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 text-text-secondary transition-transform shrink-0"></i>
             </button>
-            <div class="faq-answer px-4 sm:px-5 pb-4 sm:pb-5 text-xs text-fog-veil leading-relaxed hidden">
-              Нет! Всё работает прямо внутри Telegram. Клиенты переходят по вашей ссылке и за 20 секунд оформляют запись без регистрации.
+            <div class="faq-answer px-5 pb-5 text-sm text-text-secondary leading-relaxed hidden">
+              Нет! Всё работает прямо внутри Telegram, который уже установлен у большинства ваших клиентов. Они просто переходят по ссылке и за 20 секунд оформляют запись без регистрации.
             </div>
           </div>
 
-          <div class="faq-item keynote-card overflow-hidden">
-            <button class="faq-toggle w-full p-4 sm:p-5 text-left flex items-center justify-between gap-3 font-semibold text-white hover:text-electric-blue transition-colors text-xs sm:text-sm">
+          <div class="faq-item zen-card overflow-hidden">
+            <button class="faq-toggle w-full p-5 text-left flex items-center justify-between gap-3 font-display font-bold text-forest-dark hover:text-coral-accent transition-colors text-sm sm:text-base">
               <span>Сложно ли настроить бота без технических навыков?</span>
-              <i data-lucide="chevron-down" class="faq-chevron w-4 h-4 text-fog-veil transition-transform shrink-0"></i>
+              <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 text-text-secondary transition-transform shrink-0"></i>
             </button>
-            <div class="faq-answer px-4 sm:px-5 pb-4 sm:pb-5 text-xs text-fog-veil leading-relaxed hidden">
-              Настройка занимает 3-5 минут прямо со смартфона. Бот сам пошагово запросит ваши услуги, длительность, цены и рабочие часы.
+            <div class="faq-answer px-5 pb-5 text-sm text-text-secondary leading-relaxed hidden">
+              Настройка занимает от 3 до 5 минут со смартфона. Бот сам пошагово запросит ваши услуги, длительность, цены и рабочие дни.
             </div>
           </div>
 
-          <div class="faq-item keynote-card overflow-hidden">
-            <button class="faq-toggle w-full p-4 sm:p-5 text-left flex items-center justify-between gap-3 font-semibold text-white hover:text-electric-blue transition-colors text-xs sm:text-sm">
-              <span>Подходит ли для психологов, репетиторов и тренеров?</span>
-              <i data-lucide="chevron-down" class="faq-chevron w-4 h-4 text-fog-veil transition-transform shrink-0"></i>
+          <div class="faq-item zen-card overflow-hidden">
+            <button class="faq-toggle w-full p-5 text-left flex items-center justify-between gap-3 font-display font-bold text-forest-dark hover:text-coral-accent transition-colors text-sm sm:text-base">
+              <span>Подходит ли бот для психологов, тренеров, репетиторов и грумеров?</span>
+              <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 text-text-secondary transition-transform shrink-0"></i>
             </button>
-            <div class="faq-answer px-4 sm:px-5 pb-4 sm:pb-5 text-xs text-fog-veil leading-relaxed hidden">
-              Да, бот адаптирован под 7 направлений: бьюти, психологи, репетиторы, фитнес, эзотерика, груминг и экспертный консалтинг.
+            <div class="faq-answer px-5 pb-5 text-sm text-text-secondary leading-relaxed hidden">
+              Да, абсолютно! Бот адаптирован под 7 направлений: бьюти, психологи, репетиторы, фитнес-тренеры, тарологи, грумеры и бизнес-консультанты. Вы просто задаёте свои процедуры и график.
             </div>
           </div>
 
-          <div class="faq-item keynote-card overflow-hidden">
-            <button class="faq-toggle w-full p-4 sm:p-5 text-left flex items-center justify-between gap-3 font-semibold text-white hover:text-electric-blue transition-colors text-xs sm:text-sm">
-              <span>Нужно ли указывать карту для 14-дневного теста?</span>
-              <i data-lucide="chevron-down" class="faq-chevron w-4 h-4 text-fog-veil transition-transform shrink-0"></i>
+          <div class="faq-item zen-card overflow-hidden">
+            <button class="faq-toggle w-full p-5 text-left flex items-center justify-between gap-3 font-display font-bold text-forest-dark hover:text-coral-accent transition-colors text-sm sm:text-base">
+              <span>Нужно ли привязывать банковскую карту для 14-дневного теста?</span>
+              <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 text-text-secondary transition-transform shrink-0"></i>
             </button>
-            <div class="faq-answer px-4 sm:px-5 pb-4 sm:pb-5 text-xs text-fog-veil leading-relaxed hidden">
-              Никаких карт. Вы получаете полный доступ на 14 дней сразу после нажатия /start в боте.
+            <div class="faq-answer px-5 pb-5 text-sm text-text-secondary leading-relaxed hidden">
+              Никаких карт. Вы получаете полный доступ ко всем функциям на 14 дней сразу после нажатия /start в боте.
             </div>
           </div>
 
@@ -757,31 +701,31 @@
       </div>
     </section>
 
-    <!-- STAGE 9: FINAL KEYNOTE LAUNCHPAD -->
-    <section class="py-16 sm:py-24 border-t border-white/[0.08] relative text-center">
+    <!-- STAGE 8: FINAL CTA BANNER (ZENDESK SKY / FOREST BANNER) -->
+    <section class="py-16 sm:py-24 bg-sky/60 border-t border-border-subtle relative text-center">
       <div class="max-w-3xl mx-auto px-4 sm:px-6 space-y-6 sm:space-y-8">
         
-        <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-tr from-electric-blue to-void-violet flex items-center justify-center mx-auto shadow-2xl shadow-electric-blue/40">
-          <i data-lucide="sparkles" class="w-6 h-6 sm:w-7 sm:h-7 text-white"></i>
+        <div class="w-14 h-14 rounded-2xl bg-forest-dark text-white flex items-center justify-center mx-auto shadow-lg shadow-forest-dark/20">
+          <i data-lucide="sparkles" class="w-7 h-7 text-yellow-accent"></i>
         </div>
 
-        <h2 class="font-display text-2xl sm:text-4xl md:text-5xl font-semibold text-ice-highlight">
-          Готовы автоматизировать запись?
+        <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-forest-dark leading-tight">
+          Готовы автоматизировать запись и <span class="underline-coral">забыть о рутине</span>?
         </h2>
 
-        <p class="text-fog-veil text-xs sm:text-sm md:text-base max-w-lg mx-auto">
-          Подключите <span class="text-white font-mono">@zapishis_app_bot</span> за 3 минуты и начните принимать записи в Telegram уже сегодня.
+        <p class="text-text-secondary text-sm sm:text-base max-w-lg mx-auto">
+          Подключите <strong class="text-forest-dark">@zapishis_app_bot</strong> за 3 минуты и начните принимать клиентов онлайн уже сегодня.
         </p>
 
-        <div class="pt-1">
-          <a href="https://t.me/zapishis_app_bot" target="_blank" rel="noopener noreferrer" class="btn-keynote-primary text-sm sm:text-base py-3.5 sm:py-4 px-6 sm:px-8 shadow-2xl">
-            <i data-lucide="send" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+        <div class="pt-2">
+          <a href="https://t.me/zapishis_app_bot" target="_blank" rel="noopener noreferrer" class="btn-zen-coral text-base py-4 px-9 shadow-xl hover:scale-105">
+            <i data-lucide="send" class="w-5 h-5"></i>
             <span>Запустить в Telegram (@zapishis_app_bot)</span>
           </a>
         </div>
 
-        <div class="text-[10px] sm:text-[11px] font-mono text-fog-veil">
-          14 ДНЕЙ ПОЛНЫЙ ДОСТУП • БЕЗ ПРИВЯЗКИ КАРТЫ • ОТМЕНА В ЛЮБОЙ МОМЕНТ
+        <div class="text-xs font-display font-semibold text-text-secondary">
+          14 ДНЕЙ ПОЛНЫЙ ДОСТУП • БЕЗ ПРИВЯЗКИ КАРТЫ • СТАРТ ЗА 3 МИНУТЫ
         </div>
 
       </div>
@@ -789,39 +733,40 @@
 
   </main>
 
-  <!-- FOOTER (AUTHKIT MINIMALIST FOOTER) -->
-  <footer class="py-8 sm:py-10 border-t border-white/[0.08] bg-obsidian text-[11px] sm:text-xs font-mono text-fog-veil">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 text-center sm:text-left">
+  <!-- FOOTER -->
+  <footer class="py-10 border-t border-border-subtle bg-sand-light text-xs text-text-secondary">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
       
       <div class="flex items-center gap-3">
-        <div class="w-6 h-6 rounded-full bg-electric-blue/20 flex items-center justify-center text-electric-blue">
-          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+        <div class="w-7 h-7 rounded-xl bg-forest-dark flex items-center justify-center text-yellow-accent">
+          <i data-lucide="sparkles" class="w-4 h-4"></i>
         </div>
-        <span class="text-white font-semibold">SlotBot / Запишись Core</span>
+        <span class="font-display font-bold text-forest-dark text-sm">SlotBot — Онлайн-запись в Telegram</span>
       </div>
 
-      <div class="flex items-center gap-4 sm:gap-6">
-        <a href="https://t.me/zapishis_app_bot" target="_blank" class="hover:text-white transition-colors">Telegram Bot</a>
-        <a href="#niches" class="hover:text-white transition-colors">7 Сфер</a>
-        <a href="#pricing" class="hover:text-white transition-colors">Тарифы</a>
+      <div class="flex items-center gap-6 font-display font-semibold">
+        <a href="https://t.me/zapishis_app_bot" target="_blank" class="hover:text-forest-dark transition-colors">Telegram Bot</a>
+        <a href="#niches" class="hover:text-forest-dark transition-colors">7 Сфер</a>
+        <a href="#pricing" class="hover:text-forest-dark transition-colors">Тарифы</a>
+        <a href="#faq" class="hover:text-forest-dark transition-colors">FAQ</a>
       </div>
 
       <div>
-        © 2026 SlotBot Engine. All rights reserved.
+        © 2026 SlotBot. Все права защищены.
       </div>
 
     </div>
   </footer>
 
-  <!-- FLOATING MOBILE BOTTOM BAR (ТОЛЬКО НА СМАРТФОНАХ) -->
-  <div class="fixed bottom-3 left-3 right-3 z-40 sm:hidden">
-    <a href="https://t.me/zapishis_app_bot" target="_blank" rel="noopener noreferrer" class="btn-keynote-primary w-full py-3.5 px-4 text-xs font-mono uppercase tracking-wider flex items-center justify-center gap-2 shadow-2xl backdrop-blur-xl">
+  <!-- FLOATING MOBILE BOTTOM BAR (ДЛЯ INSTAGRAM-ТРАФИКА) -->
+  <div class="fixed bottom-3 left-3 right-3 z-40 sm:hidden mobile-floating-bar">
+    <a href="https://t.me/zapishis_app_bot" target="_blank" rel="noopener noreferrer" class="btn-zen-coral w-full py-3.5 px-4 text-sm font-display font-bold flex items-center justify-center gap-2 shadow-2xl backdrop-blur-lg">
       <i data-lucide="send" class="w-4 h-4"></i>
-      <span>Запустить в Telegram</span>
+      <span>Запустить в Telegram бесплатно</span>
     </a>
   </div>
 
-  <!-- Scripts -->
-  <script src="app.js?v=3.0"></script>
+  <!-- JavaScript -->
+  <script src="app.js?v=5.0"></script>
 </body>
 </html>

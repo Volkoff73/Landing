@@ -271,41 +271,41 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="lg:col-span-7 space-y-6">
           
           <div class="flex items-center gap-3">
-            <span class="font-mono text-[10px] uppercase px-2.5 py-1 rounded bg-electric-blue/15 text-electric-blue border border-electric-blue/30">
+            <span class="font-mono text-[10px] uppercase font-bold px-3 py-1 rounded-full bg-coral-accent/10 text-coral-accent border border-coral-accent/20">
               ${niche.badge}
             </span>
-            <span class="text-xs font-mono text-fog-veil">${niche.role}</span>
+            <span class="text-xs font-mono text-text-muted">${niche.role}</span>
           </div>
 
-          <h3 class="font-display text-2xl sm:text-3xl font-semibold text-white leading-snug">
+          <h3 class="font-display text-2xl sm:text-3xl font-extrabold text-forest-dark leading-snug">
             ${niche.headline}
           </h3>
 
           <div class="space-y-2.5">
-            <div class="font-mono text-[11px] uppercase tracking-wider text-rose-400">
+            <div class="font-mono text-[11px] uppercase tracking-wider text-coral-accent font-bold">
               Специфические боли в вашей сфере:
             </div>
             ${niche.pains.map(pain => `
-              <div class="flex items-start gap-3 text-xs sm:text-sm text-moon-mist">
-                <span class="text-rose-400 shrink-0 font-bold">✕</span>
+              <div class="flex items-start gap-3 text-xs sm:text-sm text-text-secondary">
+                <span class="text-coral-accent shrink-0 font-bold">✕</span>
                 <span>${pain}</span>
               </div>
             `).join('')}
           </div>
 
-          <div class="p-4 rounded-2xl bg-gradient-to-r from-electric-blue/10 to-emerald-glow/10 border border-electric-blue/20 text-xs sm:text-sm text-frost-glow flex items-start gap-3">
-            <span class="text-emerald-glow text-base font-bold shrink-0">✓</span>
+          <div class="p-4 rounded-2xl bg-bg-mint border border-emerald-600/20 text-xs sm:text-sm text-forest-dark flex items-start gap-3">
+            <span class="text-emerald-700 text-base font-bold shrink-0">✓</span>
             <div>
-              <strong class="text-white font-medium">Решение бота:</strong> ${niche.solution}
+              <strong class="text-forest-dark font-bold">Решение бота:</strong> ${niche.solution}
             </div>
           </div>
 
-          <div class="p-4 rounded-2xl bg-graphite border border-white/[0.06] space-y-2">
-            <p class="text-xs sm:text-sm text-moon-mist italic">${niche.quote.text}</p>
-            <div class="text-xs font-mono text-white flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-electric-blue"></span>
+          <div class="p-4 rounded-2xl bg-white border border-border-card shadow-sm space-y-2">
+            <p class="text-xs sm:text-sm text-text-secondary italic">${niche.quote.text}</p>
+            <div class="text-xs font-mono text-forest-dark font-semibold flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-coral-accent"></span>
               <span>${niche.quote.author}</span>
-              <span class="text-fog-veil font-normal">(${niche.quote.specialty})</span>
+              <span class="text-text-muted font-normal">(${niche.quote.specialty})</span>
             </div>
           </div>
 
@@ -313,43 +313,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
         <!-- Right Column: Live Menu Matrix -->
         <div class="lg:col-span-5 space-y-4">
-          <div class="p-5 rounded-2xl bg-graphite border border-white/[0.08] space-y-3.5">
+          <div class="p-5 rounded-2xl bg-white border border-border-card shadow-sm space-y-3.5">
             
-            <div class="flex justify-between items-center pb-2.5 border-b border-white/[0.08]">
-              <span class="font-mono text-[10px] uppercase text-fog-veil tracking-wider">Пример каталога услуг</span>
-              <span class="font-mono text-[10px] text-electric-blue">Live Preview</span>
+            <div class="flex justify-between items-center pb-2.5 border-b border-border-card">
+              <span class="font-mono text-[10px] uppercase text-text-muted tracking-wider">Пример каталога услуг</span>
+              <span class="font-mono text-[10px] text-coral-accent font-bold">Live Preview</span>
             </div>
 
             <div class="space-y-2">
               ${niche.services.map(svc => `
-                <div class="p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] flex items-center justify-between hover:border-electric-blue/40 transition-colors">
+                <div class="p-3 rounded-xl bg-bg-sand/60 border border-border-card flex items-center justify-between hover:border-coral-accent/40 transition-colors">
                   <div>
-                    <div class="text-xs font-medium text-white">${svc.name}</div>
-                    <div class="text-[10px] font-mono text-fog-veil mt-0.5">${svc.duration}</div>
+                    <div class="text-xs font-bold text-forest-dark">${svc.name}</div>
+                    <div class="text-[10px] font-mono text-text-muted mt-0.5">${svc.duration}</div>
                   </div>
-                  <div class="font-display font-semibold text-sm text-emerald-glow shrink-0 ml-3">
+                  <div class="font-display font-bold text-sm text-emerald-700 shrink-0 ml-3">
                     ${svc.price}
                   </div>
                 </div>
               `).join('')}
             </div>
 
-            <div class="grid grid-cols-3 gap-2 pt-2 border-t border-white/[0.08] text-center font-mono text-[10px]">
-              <div class="p-2 rounded-lg bg-white/[0.02]">
-                <div class="font-display font-bold text-sm text-white">${niche.metrics.savedHours}</div>
-                <div class="text-fog-veil">в месяц</div>
+            <div class="grid grid-cols-3 gap-2 pt-2 border-t border-border-card text-center font-mono text-[10px]">
+              <div class="p-2 rounded-lg bg-bg-sand/60">
+                <div class="font-display font-extrabold text-sm text-forest-dark">${niche.metrics.savedHours}</div>
+                <div class="text-text-muted">в месяц</div>
               </div>
-              <div class="p-2 rounded-lg bg-white/[0.02]">
-                <div class="font-display font-bold text-sm text-emerald-glow">${niche.metrics.savedMoney}</div>
-                <div class="text-fog-veil">сохранено</div>
+              <div class="p-2 rounded-lg bg-bg-sand/60">
+                <div class="font-display font-extrabold text-sm text-emerald-700">${niche.metrics.savedMoney}</div>
+                <div class="text-text-muted">сохранено</div>
               </div>
-              <div class="p-2 rounded-lg bg-white/[0.02]">
-                <div class="font-display font-bold text-sm text-electric-blue">${niche.metrics.highlight}</div>
-                <div class="text-fog-veil">результат</div>
+              <div class="p-2 rounded-lg bg-bg-sand/60">
+                <div class="font-display font-extrabold text-sm text-coral-accent">${niche.metrics.highlight}</div>
+                <div class="text-text-muted">результат</div>
               </div>
             </div>
 
-            <a href="https://t.me/zapishis_app_bot" target="_blank" rel="noopener noreferrer" class="btn-keynote-primary w-full text-xs py-3 text-center">
+            <a href="https://t.me/zapishis_app_bot" target="_blank" rel="noopener noreferrer" class="btn-zen-coral w-full text-xs py-3 text-center">
               <span>Запустить @zapishis_app_bot</span>
               <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
             </a>
@@ -420,16 +420,16 @@ document.addEventListener('DOMContentLoaded', () => {
   if (simModeClient && simModeMaster) {
     simModeClient.addEventListener('click', () => {
       simState.mode = 'client';
-      simModeClient.className = 'flex-1 py-3 px-4 rounded-xl text-xs font-mono uppercase tracking-wider font-semibold transition-all flex items-center justify-center gap-2 bg-electric-blue text-white shadow-lg';
-      simModeMaster.className = 'flex-1 py-3 px-4 rounded-xl text-xs font-mono uppercase tracking-wider font-semibold transition-all flex items-center justify-center gap-2 text-fog-veil hover:text-white hover:bg-white/[0.04]';
+      simModeClient.className = 'flex-1 py-3 px-4 rounded-xl text-xs font-mono uppercase tracking-wider font-semibold transition-all flex items-center justify-center gap-2 bg-forest-dark text-white shadow-md';
+      simModeMaster.className = 'flex-1 py-3 px-4 rounded-xl text-xs font-mono uppercase tracking-wider font-semibold transition-all flex items-center justify-center gap-2 text-text-muted hover:text-forest-dark hover:bg-black/[0.03]';
       renderSimulator();
     });
 
     simModeMaster.addEventListener('click', () => {
       simState.mode = 'master';
       if (masterPushBadge) masterPushBadge.classList.add('hidden');
-      simModeMaster.className = 'flex-1 py-3 px-4 rounded-xl text-xs font-mono uppercase tracking-wider font-semibold transition-all flex items-center justify-center gap-2 bg-electric-blue text-white shadow-lg';
-      simModeClient.className = 'flex-1 py-3 px-4 rounded-xl text-xs font-mono uppercase tracking-wider font-semibold transition-all flex items-center justify-center gap-2 text-fog-veil hover:text-white hover:bg-white/[0.04]';
+      simModeMaster.className = 'flex-1 py-3 px-4 rounded-xl text-xs font-mono uppercase tracking-wider font-semibold transition-all flex items-center justify-center gap-2 bg-forest-dark text-white shadow-md';
+      simModeClient.className = 'flex-1 py-3 px-4 rounded-xl text-xs font-mono uppercase tracking-wider font-semibold transition-all flex items-center justify-center gap-2 text-text-muted hover:text-forest-dark hover:bg-black/[0.03]';
       renderSimulator();
     });
   }
@@ -469,17 +469,17 @@ document.addEventListener('DOMContentLoaded', () => {
         👋 <strong>Добро пожаловать!</strong><br />
         Я бот для моментальной онлайн-записи.<br />
         Выберите процедуру и свободное время прямо в Telegram ✨
-        <span class="float-right text-[9px] text-fog-veil ml-2 mt-1 font-mono">${timeStr}</span>
+        <span class="float-right text-[9px] text-text-muted ml-2 mt-1 font-mono">${timeStr}</span>
       </div>
     `;
 
     if (simState.step === 'welcome') {
       keyboardHtml = `
-        <button id="simBtnStartBooking" class="btn-keynote-primary w-full text-xs py-3">
+        <button id="simBtnStartBooking" class="btn-zen-coral w-full text-xs py-3">
           <i data-lucide="calendar" class="w-4 h-4"></i>
           <span>💅 Записаться на процедуру</span>
         </button>
-        <div class="text-[10px] font-mono text-center text-fog-veil">Нажмите на кнопку выше для старта</div>
+        <div class="text-[10px] font-mono text-center text-text-muted">Нажмите на кнопку выше для старта</div>
       `;
     }
 
@@ -487,12 +487,12 @@ document.addEventListener('DOMContentLoaded', () => {
       chatHtml += `
         <div class="sim-bubble-out">
           💅 Записаться на процедуру
-          <span class="float-right text-[9px] text-white/60 ml-2 mt-1 font-mono">${timeStr}</span>
+          <span class="float-right text-[9px] text-white/80 ml-2 mt-1 font-mono">${timeStr}</span>
         </div>
         <div class="sim-bubble-in">
           📋 <strong>Каталог процедур:</strong><br />
           Выберите интересующую вас услугу:
-          <span class="float-right text-[9px] text-fog-veil ml-2 mt-1 font-mono">${timeStr}</span>
+          <span class="float-right text-[9px] text-text-muted ml-2 mt-1 font-mono">${timeStr}</span>
         </div>
       `;
     }
@@ -501,13 +501,13 @@ document.addEventListener('DOMContentLoaded', () => {
       keyboardHtml = `
         <div class="space-y-1.5 max-h-48 overflow-y-auto pr-1">
           ${simState.currentServices.map((svc, idx) => `
-            <button class="sim-btn-action sim-select-svc text-left flex justify-between items-center py-2 px-3" data-idx="${idx}">
-              <span class="text-white">${svc.name}</span>
-              <span class="font-mono text-emerald-glow font-semibold shrink-0 ml-2">${svc.price}</span>
+            <button class="sim-btn-action sim-select-svc text-left flex justify-between items-center py-2 px-3 w-full" data-idx="${idx}">
+              <span class="text-forest-dark font-medium">${svc.name}</span>
+              <span class="font-mono text-emerald-700 font-bold shrink-0 ml-2">${svc.price}</span>
             </button>
           `).join('')}
         </div>
-        <div class="text-[10px] font-mono text-center text-fog-veil">Выберите процедуру из каталога</div>
+        <div class="text-[10px] font-mono text-center text-text-muted">Выберите процедуру из каталога</div>
       `;
     }
 
@@ -515,12 +515,12 @@ document.addEventListener('DOMContentLoaded', () => {
       chatHtml += `
         <div class="sim-bubble-out">
           Выбрано: ${simState.selectedService.name} (${simState.selectedService.price})
-          <span class="float-right text-[9px] text-white/60 ml-2 mt-1 font-mono">${timeStr}</span>
+          <span class="float-right text-[9px] text-white/80 ml-2 mt-1 font-mono">${timeStr}</span>
         </div>
         <div class="sim-bubble-in">
           📅 <strong>Выберите удобный день:</strong><br />
           Зелёный индикатор — есть свободные окна:
-          <span class="float-right text-[9px] text-fog-veil ml-2 mt-1 font-mono">${timeStr}</span>
+          <span class="float-right text-[9px] text-text-muted ml-2 mt-1 font-mono">${timeStr}</span>
         </div>
       `;
     }
@@ -536,12 +536,12 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="grid grid-cols-2 gap-1.5">
           ${dates.map(d => `
             <button class="sim-btn-action sim-select-date text-xs py-2 px-2.5 flex items-center justify-between ${d.free ? '' : 'opacity-30 pointer-events-none'}" data-label="${d.label}">
-              <span>${d.label}</span>
-              <span class="w-1.5 h-1.5 rounded-full ${d.free ? 'bg-emerald-glow' : 'bg-rose-500'}"></span>
+              <span class="text-forest-dark font-medium">${d.label}</span>
+              <span class="w-2 h-2 rounded-full ${d.free ? 'bg-emerald-600' : 'bg-rose-500'}"></span>
             </button>
           `).join('')}
         </div>
-        <div class="text-[10px] font-mono text-center text-fog-veil">Выберите доступный день</div>
+        <div class="text-[10px] font-mono text-center text-text-muted">Выберите доступный день</div>
       `;
     }
 
@@ -549,11 +549,11 @@ document.addEventListener('DOMContentLoaded', () => {
       chatHtml += `
         <div class="sim-bubble-out">
           Дата: ${simState.selectedDate}
-          <span class="float-right text-[9px] text-white/60 ml-2 mt-1 font-mono">${timeStr}</span>
+          <span class="float-right text-[9px] text-white/80 ml-2 mt-1 font-mono">${timeStr}</span>
         </div>
         <div class="sim-bubble-in">
           ⏰ <strong>Свободные интервалы (${simState.selectedService.duration}):</strong>
-          <span class="float-right text-[9px] text-fog-veil ml-2 mt-1 font-mono">${timeStr}</span>
+          <span class="float-right text-[9px] text-text-muted ml-2 mt-1 font-mono">${timeStr}</span>
         </div>
       `;
     }
@@ -563,12 +563,12 @@ document.addEventListener('DOMContentLoaded', () => {
       keyboardHtml = `
         <div class="grid grid-cols-4 gap-1.5">
           ${slots.map(s => `
-            <button class="sim-btn-action sim-select-slot font-mono font-bold py-2 text-white" data-slot="${s}">
+            <button class="sim-btn-action sim-select-slot font-mono font-bold py-2 text-forest-dark" data-slot="${s}">
               ${s}
             </button>
           `).join('')}
         </div>
-        <div class="text-[10px] font-mono text-center text-fog-veil">Выберите желаемый слот</div>
+        <div class="text-[10px] font-mono text-center text-text-muted">Выберите желаемый слот</div>
       `;
     }
 
@@ -576,7 +576,7 @@ document.addEventListener('DOMContentLoaded', () => {
       chatHtml += `
         <div class="sim-bubble-out">
           Время: ${simState.selectedSlot}
-          <span class="float-right text-[9px] text-white/60 ml-2 mt-1 font-mono">${timeStr}</span>
+          <span class="float-right text-[9px] text-white/80 ml-2 mt-1 font-mono">${timeStr}</span>
         </div>
         <div class="sim-bubble-in">
           📝 <strong>Проверьте параметры записи:</strong><br />
@@ -584,14 +584,14 @@ document.addEventListener('DOMContentLoaded', () => {
           • Дата и время: ${simState.selectedDate} в ${simState.selectedSlot}<br />
           • Стоимость: ${simState.selectedService.price}<br />
           • Клиент: ${simState.clientName} (${simState.clientPhone})
-          <span class="float-right text-[9px] text-fog-veil ml-2 mt-1 font-mono">${timeStr}</span>
+          <span class="float-right text-[9px] text-text-muted ml-2 mt-1 font-mono">${timeStr}</span>
         </div>
       `;
     }
 
     if (simState.step === 'confirm') {
       keyboardHtml = `
-        <button id="simBtnConfirmBooking" class="btn-keynote-primary w-full text-xs py-3 bg-emerald-600">
+        <button id="simBtnConfirmBooking" class="btn-zen-primary w-full text-xs py-3 bg-emerald-700 hover:bg-emerald-800 text-white font-bold">
           <i data-lucide="check-circle" class="w-4 h-4"></i>
           <span>✅ Подтвердить запись</span>
         </button>
@@ -600,21 +600,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (simState.step === 'success') {
       chatHtml += `
-        <div class="sim-bubble-in border-emerald-500/30 bg-emerald-950/30">
+        <div class="sim-bubble-in border-emerald-500/30 bg-emerald-50 text-forest-dark">
           🎉 <strong>Вы успешно записаны!</strong><br /><br />
           📍 Адрес: ул. Ленина, д. 42<br />
           🔔 <i>Бот пришлёт автонапоминание за 24 ч и за 2 ч до начала.</i>
-          <span class="float-right text-[9px] text-fog-veil ml-2 mt-1 font-mono">${timeStr}</span>
+          <span class="float-right text-[9px] text-text-muted ml-2 mt-1 font-mono">${timeStr}</span>
         </div>
       `;
 
       keyboardHtml = `
-        <div class="p-3 rounded-xl bg-electric-blue/10 border border-electric-blue/30 text-center space-y-2">
-          <div class="text-xs font-mono text-white flex items-center justify-center gap-1.5">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-glow animate-ping"></span>
+        <div class="p-3 rounded-xl bg-bg-mint border border-emerald-600/20 text-center space-y-2">
+          <div class="text-xs font-mono text-forest-dark font-bold flex items-center justify-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-600 animate-ping"></span>
             Запись передана мастеру!
           </div>
-          <button id="simSwitchToMasterBtn" class="btn-keynote-primary w-full text-xs py-2">
+          <button id="simSwitchToMasterBtn" class="btn-zen-coral w-full text-xs py-2">
             👉 Экран мастера (Cockpit)
           </button>
         </div>
@@ -683,33 +683,33 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="sim-bubble-in">
         👑 <strong>Cockpit мастера:</strong><br />
         Управление расписанием и моментальные уведомления о новых клиентах.
-        <span class="float-right text-[9px] text-fog-veil ml-2 mt-1 font-mono">${timeStr}</span>
+        <span class="float-right text-[9px] text-text-muted ml-2 mt-1 font-mono">${timeStr}</span>
       </div>
     `;
 
     if (simState.masterHasNewBooking && simState.selectedService) {
       chatHtml += `
-        <div class="p-3.5 rounded-2xl bg-gradient-to-b from-[#182335] to-[#0f1724] border border-electric-blue/40 space-y-2">
-          <div class="flex items-center justify-between pb-1.5 border-b border-white/[0.08]">
-            <span class="font-mono text-[10px] font-bold text-electric-blue flex items-center gap-1.5">
-              <i data-lucide="bell-ring" class="w-3.5 h-3.5 text-emerald-glow"></i>
+        <div class="p-3.5 rounded-2xl bg-white border-2 border-coral-accent/40 shadow-sm space-y-2">
+          <div class="flex items-center justify-between pb-1.5 border-b border-border-card">
+            <span class="font-mono text-[10px] font-bold text-coral-accent flex items-center gap-1.5">
+              <i data-lucide="bell-ring" class="w-3.5 h-3.5 text-coral-accent"></i>
               НОВАЯ ЗАПИСЬ ОНЛАЙН!
             </span>
-            <span class="font-mono text-[9px] text-fog-veil">только что</span>
+            <span class="font-mono text-[9px] text-text-muted">только что</span>
           </div>
-          <div class="text-xs text-frost-glow space-y-1">
+          <div class="text-xs text-forest-dark space-y-1">
             <div>👤 <strong>Клиент:</strong> ${simState.clientName} (${simState.clientPhone})</div>
             <div>💅 <strong>Услуга:</strong> ${simState.selectedService.name}</div>
             <div>📅 <strong>Время:</strong> ${simState.selectedDate} в ${simState.selectedSlot}</div>
             <div>💰 <strong>Сумма:</strong> ${simState.selectedService.price}</div>
           </div>
-          <div class="pt-1 text-[10px] font-mono text-fog-veil">
+          <div class="pt-1 text-[10px] font-mono text-text-muted">
             Статус: ${
               simState.masterDecision === 'approved' 
-                ? '<span class="text-emerald-glow font-bold">ПОДТВЕРЖДЕНО ✅</span>' 
+                ? '<span class="text-emerald-700 font-bold">ПОДТВЕРЖДЕНО ✅</span>' 
                 : simState.masterDecision === 'rejected'
-                ? '<span class="text-rose-400 font-bold">ОТКЛОНЕНО ❌</span>'
-                : '<span class="text-amber-300 font-bold">ОЖИДАЕТ РЕШЕНИЯ ⏳</span>'
+                ? '<span class="text-rose-600 font-bold">ОТКЛОНЕНО ❌</span>'
+                : '<span class="text-amber-700 font-bold">ОЖИДАЕТ РЕШЕНИЯ ⏳</span>'
             }
           </div>
         </div>
@@ -718,11 +718,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!simState.masterDecision) {
         keyboardHtml = `
           <div class="grid grid-cols-2 gap-2">
-            <button id="masterApproveBtn" class="sim-btn-action bg-emerald-600/30 border-emerald-500/50 text-emerald-300 hover:bg-emerald-600 font-bold flex items-center justify-center gap-1.5">
+            <button id="masterApproveBtn" class="sim-btn-action bg-emerald-50 border-emerald-500/50 text-emerald-800 hover:bg-emerald-100 font-bold flex items-center justify-center gap-1.5">
               <i data-lucide="check" class="w-3.5 h-3.5"></i>
               <span>Подтвердить</span>
             </button>
-            <button id="masterRejectBtn" class="sim-btn-action bg-rose-600/20 border-rose-500/40 text-rose-300 hover:bg-rose-600 font-bold flex items-center justify-center gap-1.5">
+            <button id="masterRejectBtn" class="sim-btn-action bg-rose-50 border-rose-400/50 text-rose-800 hover:bg-rose-100 font-bold flex items-center justify-center gap-1.5">
               <i data-lucide="x" class="w-3.5 h-3.5"></i>
               <span>Отклонить</span>
             </button>
@@ -730,9 +730,9 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       } else {
         keyboardHtml = `
-          <div class="p-2.5 rounded-xl bg-white/[0.03] text-center text-xs text-moon-mist space-y-2">
+          <div class="p-2.5 rounded-xl bg-bg-sand border border-border-card text-center text-xs text-text-secondary space-y-2">
             <div>Клиент моментально получил пуш в Telegram!</div>
-            <button id="masterBackToClient" class="btn-keynote-primary w-full text-xs py-2">
+            <button id="masterBackToClient" class="btn-zen-primary w-full text-xs py-2">
               ← Вернуться к экрану клиента
             </button>
           </div>
@@ -747,7 +747,7 @@ document.addEventListener('DOMContentLoaded', () => {
           • 15:00 — [Свободный слот]<br />
           • 17:30 — Наращивание ресниц (Дарья)<br /><br />
           <i>💡 Сделайте бронь в режиме клиента, чтобы протестировать пуш!</i>
-          <span class="float-right text-[9px] text-fog-veil ml-2 mt-1 font-mono">${timeStr}</span>
+          <span class="float-right text-[9px] text-text-muted ml-2 mt-1 font-mono">${timeStr}</span>
         </div>
       `;
 
@@ -862,9 +862,9 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', () => {
     if (!navbar) return;
     if (window.scrollY > 40) {
-      navbar.classList.add('shadow-2xl', 'bg-canvas/95');
+      navbar.classList.add('shadow-md', 'bg-bg-sand/95', 'backdrop-blur-md');
     } else {
-      navbar.classList.remove('shadow-2xl', 'bg-canvas/95');
+      navbar.classList.remove('shadow-md', 'bg-bg-sand/95', 'backdrop-blur-md');
     }
   });
 
