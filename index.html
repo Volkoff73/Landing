@@ -1,885 +1,132 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <title>SlotBot — Онлайн-запись клиентов в Telegram 24/7</title>
-  <meta name="description" content="Умный Telegram-бот для онлайн-записи клиентов без звонков и переписок. 14 дней бесплатно. Для бьюти-мастеров, психологов, репетиторов, тренеров и экспертов." />
-
-  <!-- Performance Resource Hints -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-  <link rel="dns-prefetch" href="https://unpkg.com" />
-
-  <!-- Optimized Google Fonts with font-display: swap -->
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
-
-  <!-- Pre-compiled Static CSS (Zero Runtime Overhead, Zero TBT) -->
-  <link rel="preload" href="styles.css?v=6.0" as="style" />
-  <link rel="stylesheet" href="styles.css?v=6.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>SlotBot — онлайн-запись клиентов в Telegram для мастеров</title>
+<meta name="description" content="Telegram-бот: клиенты сами записываются в ваши свободные окна и получают напоминания за 24 и за 2 часа. 14 дней бесплатно, затем 590 ₽ в месяц.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SlotBot — клиенты записываются сами, вы работаете">
+<meta property="og:description" content="Онлайн-запись и напоминания в Telegram. Клиентам ничего скачивать не нужно. 14 дней бесплатно.">
+<meta name="theme-color" content="#fbfaf7">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💬%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-sand text-text-primary antialiased selection:bg-coral-accent selection:text-white pb-20 sm:pb-0">
+<body>
+<header><div class="w">
+<a class="logo" href="#top">SlotBot</a>
+<nav><a href="#demo">Как это работает</a><a href="#pains">Что решает</a><a href="#calc">Калькулятор</a><a href="#pricing">Тариф</a><a href="#faq">Вопросы</a></nav>
+<a class="btn" style="padding:9px 16px;font-size:14px" href="https://t.me/zapishis_app_bot?start=site_nav" target="_blank" rel="noopener">Попробовать бесплатно</a>
+</div></header>
 
-  <!-- TOP ANNOUNCEMENT BANNER -->
-  <div class="bg-forest-dark text-white py-2 px-4 text-center text-xs font-display font-medium tracking-wide flex items-center justify-center gap-2">
-    <span class="inline-block w-2 h-2 rounded-full bg-yellow-accent animate-pulse"></span>
-    <span>🔥 Специальное предложение: <strong>14 дней бесплатно</strong> со всеми функциями без привязки карты</span>
-    <a href="https://t.me/zapishis_app_bot" target="_blank" class="underline hover:text-yellow-accent ml-1 font-semibold">Попробовать →</a>
+<main id="top">
+<section class="hero w reveal" id="demo">
+<div>
+<h1>Клиенты записываются сами. Вы работаете, а не переписываетесь.</h1>
+<p class="lead">SlotBot показывает клиенту ваши свободные окна, принимает запись и напоминает о визите за 24 часа и за 2 часа. Всё в Telegram, клиентам ничего скачивать не нужно.</p>
+<div class="row">
+<a class="btn" href="https://t.me/zapishis_app_bot?start=site_hero" target="_blank" rel="noopener">Попробовать 14 дней бесплатно</a>
+<a class="btn g" href="#pains">Что он решает</a>
+</div>
+<p class="small">Для мастеров по ресницам, ногтям и бровям, парикмахеров, косметологов, а также психологов, репетиторов, тренеров и консультантов. Карта не нужна. Заявка в боте занимает около 3 минут.</p>
+</div>
+<div>
+<div class="tabs"><button id="tc" class="on">Глазами клиента</button><button id="tm">Глазами мастера<i id="dot" hidden></i></button></div>
+<div class="phone"><div class="ph">SlotBot<small>демо, кнопки нажимаются</small></div><div id="chat"></div><div id="kb"></div></div>
+<p id="hint"></p>
+</div>
+</section>
+
+<section id="pains" class="reveal"><div class="w">
+<h2>Три ситуации, из-за которых мастера теряют время и деньги</h2>
+<div class="pain">
+<h3>«Когда вы свободны? А в субботу? А в 14:00?»</h3>
+<p><b>Сейчас:</b> часы переписки каждую неделю, часто прямо во время работы.</p>
+<p class="ok"><b>С SlotBot:</b> клиент сам открывает ваше расписание и выбирает свободный слот. Окна подбираются под длительность услуги с учётом перерывов, выходных и уже занятого времени.</p>
+</div>
+<div class="pain">
+<h3>Клиент забыл и не пришёл</h3>
+<p><b>Сейчас:</b> окно пропало, доход потерян, график сбит.</p>
+<p class="ok"><b>С SlotBot:</b> бот сам напоминает клиенту за 24 часа и за 2 часа до визита.</p>
+</div>
+<div class="pain" style="border-bottom:1px solid var(--line)">
+<h3>Записи в заметках, ежедневнике или таблицах</h3>
+<p><b>Сейчас:</b> легко забыть внести перенос или записать двоих на одно время.</p>
+<p class="ok"><b>С SlotBot:</b> всё расписание в Telegram: кто записан, на какую услугу, во сколько и за какую цену. Подтвердить или отклонить запись можно одной кнопкой. Два клиента не смогут занять одно окно.</p>
+</div>
+</div></section>
+
+<section id="calc" style="background:var(--surface-alt)" class="reveal"><div class="w">
+<h2>Посчитайте, что теряется на неявках у вас</h2>
+<div class="calc">
+<div>
+<div class="sl"><label for="rp">Средняя цена услуги <span id="vp"></span></label><input id="rp" type="range" min="500" max="10000" step="100" value="2500"></div>
+<div class="sl"><label for="rw">Записей в неделю <span id="vw"></span></label><input id="rw" type="range" min="3" max="50" value="15"></div>
+<div class="sl"><label for="rn">Сколько клиентов не приходит <span id="vn"></span></label><input id="rn" type="range" min="0" max="30" value="10"></div>
+<div class="sl"><label for="rr">Допущение: сколько из них вернут напоминания <span id="vr"></span></label><input id="rr" type="range" min="0" max="100" step="5" value="50"></div>
+</div>
+<div class="res">
+<div><span>Неявки сейчас стоят вам в месяц</span><strong id="lost"></strong></div>
+<div><span>Вернётся при вашем допущении</span><strong id="back"></strong></div>
+<p id="need"></p>
+<p style="border:0;padding-top:6px">Это расчёт по вашим цифрам, а не обещание результата. Месяц считается как 4 недели.</p>
+</div>
+</div>
+</div></section>
+
+<section id="pricing" class="reveal"><div class="w price">
+<div class="card">
+<h2 style="font-size:22px;margin-bottom:8px">Один тариф, всё включено</h2>
+<strong>590 ₽</strong> <span style="color:var(--mut)">в месяц</span>
+<p style="color:var(--mut);margin-top:6px">Первые 14 дней бесплатно, без привязки карты.</p>
+<ul>
+<li>Онлайн-запись 24/7</li>
+<li>Свободное время или фиксированные окна</li>
+<li>Напоминания клиентам за 24 и за 2 часа</li>
+<li>Перерывы, выходные и отпуск</li>
+<li>Рассылка «горящих окон» по вашей базе</li>
+<li>Чёрный список, галерея работ, возврат давних клиентов</li>
+</ul>
+<a class="btn" href="https://t.me/zapishis_app_bot?start=site_pricing" target="_blank" rel="noopener" style="display:block">Начать бесплатно</a>
+</div>
+<div>
+<h2 style="font-size:22px">Как начать</h2>
+<ol>
+<li>Нажмите кнопку и откройте @zapishis_app_bot в Telegram.</li>
+<li>Ответьте на вопросы бота и оставьте заявку. Это около 3 минут.</li>
+<li>Получите своего бота, добавьте услуги и график, отправьте клиентам ссылку.</li>
+</ol>
+</div>
+</div></section>
+
+<section id="faq" style="padding-top:0" class="reveal"><div class="w">
+<h2>Частые вопросы</h2>
+<details><summary>Клиентам нужно что-то устанавливать?</summary><p>Нет. Запись идёт внутри Telegram: клиент открывает вашу ссылку, выбирает услугу, день и время.</p></details>
+<details><summary>Нужна ли банковская карта для пробного периода?</summary><p>Нет. 14 дней можно пользоваться бесплатно и без привязки карты.</p></details>
+<details><summary>Я не разбираюсь в технике. Справлюсь?</summary><p>Бот сам задаёт вопросы при заявке, а услуги, цены, график и перерывы вы настраиваете кнопками в меню мастера. Программировать ничего не нужно.</p></details>
+<details><summary>Подойдёт ли бот не только для бьюти?</summary><p>Да, он рассчитан на любые услуги с записью по времени: психологи, репетиторы, тренеры, консультанты, груминг.</p></details>
+</div></section>
+
+<section class="end reveal"><div class="w">
+<h2>Попробуйте бота на своих клиентах</h2>
+<p>14 дней бесплатно, карта не нужна.</p>
+<a class="btn" href="https://t.me/zapishis_app_bot?start=site_final" target="_blank" rel="noopener">Открыть в Telegram</a>
+</div></section>
+</main>
+<footer>
+  <div class="w footer-grid">
+    <div class="footer-req">
+      © 2026 SlotBot. Сервис онлайн-записи клиентов в Telegram.<br>
+      ИП Смирнов А.А. ОГРНИП 123456789012345 ИНН 123456789012
+    </div>
+    <div class="footer-links">
+      <a href="/privacy" target="_blank">Политика обработки персональных данных</a>
+      <a href="/terms" target="_blank">Публичная оферта</a>
+    </div>
   </div>
+</footer>
+<a class="btn bar" href="https://t.me/zapishis_app_bot?start=site_sticky" target="_blank" rel="noopener">Попробовать бесплатно</a>
 
-  <!-- NAVIGATION NAVBAR -->
-  <header class="sticky top-0 left-0 right-0 z-50 backdrop-blur-md bg-sand/90 border-b border-border-subtle transition-all duration-300" id="navbar">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
-      
-      <!-- Brand Logo -->
-      <a href="#hero" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-2xl bg-forest-dark text-white flex items-center justify-center shadow-md shadow-forest-dark/15 group-hover:scale-105 transition-transform">
-          <i data-lucide="sparkles" class="w-5 h-5 text-yellow-accent"></i>
-        </div>
-        <div class="flex flex-col">
-          <div class="flex items-center gap-2">
-            <span class="font-display font-extrabold text-xl tracking-tight text-forest-dark">SlotBot</span>
-            <span class="text-[10px] font-display font-bold uppercase px-2 py-0.5 rounded-full bg-mint text-forest-dark border border-mint-accent/20">Telegram</span>
-          </div>
-          <span class="text-[11px] text-text-secondary">онлайн-запись клиентов</span>
-        </div>
-      </a>
-
-      <!-- Desktop Navigation Links -->
-      <nav class="hidden md:flex items-center gap-7 text-sm font-display font-semibold text-text-secondary">
-        <a href="#niches" class="hover:text-forest-dark transition-colors">Для кого (7 сфер)</a>
-        <a href="#demo" class="hover:text-forest-dark transition-colors flex items-center gap-1.5 text-forest-dark">
-          <span class="w-2 h-2 rounded-full bg-mint-accent animate-pulse"></span>
-          Интерактивный демо
-        </a>
-        <a href="#comparison" class="hover:text-forest-dark transition-colors">Было / Стало</a>
-        <a href="#calculator" class="hover:text-forest-dark transition-colors">Калькулятор</a>
-        <a href="#pricing" class="hover:text-forest-dark transition-colors">Тарифы</a>
-        <a href="#faq" class="hover:text-forest-dark transition-colors">FAQ</a>
-      </nav>
-
-      <!-- Action Buttons -->
-      <div class="flex items-center gap-3">
-        <a href="https://t.me/zapishis_app_bot" target="_blank" rel="noopener noreferrer" class="btn-zen-primary hidden sm:inline-flex text-xs py-2.5 px-5">
-          <i data-lucide="send" class="w-3.5 h-3.5 text-yellow-accent"></i>
-          <span>Запустить бота</span>
-        </a>
-        <button id="mobileMenuBtn" class="md:hidden p-2.5 rounded-xl bg-white border border-border-subtle text-forest-dark hover:bg-sand-light" aria-label="Меню">
-          <i data-lucide="menu" class="w-5 h-5"></i>
-        </button>
-      </div>
-
-    </div>
-
-    <!-- Mobile Navigation Drawer -->
-    <div id="mobileMenu" class="hidden md:hidden border-b border-border-subtle bg-sand/98 px-6 py-5 space-y-3 font-display font-semibold text-sm">
-      <a href="#niches" class="mobile-nav-link block py-2 text-text-secondary hover:text-forest-dark">Для кого (7 сфер)</a>
-      <a href="#demo" class="mobile-nav-link block py-2 text-forest-dark font-bold flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-mint-accent"></span> Интерактивный демо-симулятор
-      </a>
-      <a href="#comparison" class="mobile-nav-link block py-2 text-text-secondary hover:text-forest-dark">Было vs Стало</a>
-      <a href="#calculator" class="mobile-nav-link block py-2 text-text-secondary hover:text-forest-dark">Калькулятор выгоды</a>
-      <a href="#pricing" class="mobile-nav-link block py-2 text-text-secondary hover:text-forest-dark">Тарифы</a>
-      <a href="#faq" class="mobile-nav-link block py-2 text-text-secondary hover:text-forest-dark">Вопросы и ответы</a>
-      <div class="pt-2">
-        <a href="https://t.me/zapishis_app_bot" target="_blank" class="btn-zen-coral w-full text-center text-sm py-3 justify-center">
-          <i data-lucide="send" class="w-4 h-4"></i>
-          <span>Открыть @zapishis_app_bot</span>
-        </a>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    
-    <!-- STAGE 1: HERO SECTION -->
-    <section id="hero" class="pt-10 pb-16 sm:pt-16 sm:pb-24 overflow-hidden relative">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        
-        <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-          
-          <!-- Left Content -->
-          <div class="lg:col-span-7 space-y-6 sm:space-y-8 text-center lg:text-left">
-            
-            <!-- Eyebrow Pill -->
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cream border border-forest-dark/10 text-xs font-display font-bold text-forest-dark">
-              <span class="w-2 h-2 rounded-full bg-coral-accent"></span>
-              <span>Личный бот онлайн-записи прямо в Telegram</span>
-            </div>
-
-            <!-- Headline -->
-            <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-forest-dark leading-[1.15]">
-              Клиенты записываются <span class="underline-coral">сами 24/7</span>.<br />
-              Вы занимаетесь делом, а не переписками.
-            </h1>
-
-            <!-- Subtitle -->
-            <p class="text-text-secondary text-base sm:text-lg font-normal leading-relaxed max-w-xl mx-auto lg:mx-0">
-              Умный бот для бьюти-мастеров, психологов, тренеров, репетиторов и экспертов. Автоматически выдаёт свободные окна, принимает запись и напоминает клиенту за 24 ч и 2 ч.
-            </p>
-
-            <!-- Actions -->
-            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2">
-              <a href="https://t.me/zapishis_app_bot" target="_blank" rel="noopener noreferrer" class="btn-zen-coral w-full sm:w-auto shadow-lg hover:scale-[1.02]">
-                <i data-lucide="send" class="w-4 h-4"></i>
-                <span>Попробовать бесплатно 14 дней</span>
-              </a>
-              <a href="#demo" class="btn-zen-secondary w-full sm:w-auto">
-                <i data-lucide="play-circle" class="w-4 h-4 text-forest-dark"></i>
-                <span>Протестировать симулятор</span>
-              </a>
-            </div>
-
-            <!-- Trust Features -->
-            <div class="pt-4 grid grid-cols-3 gap-2 sm:gap-4 max-w-md mx-auto lg:mx-0 text-left">
-              <div class="p-2.5 rounded-xl bg-white border border-border-card flex items-center gap-2 shadow-sm">
-                <i data-lucide="check-circle-2" class="w-4 h-4 text-mint-accent shrink-0"></i>
-                <span class="text-xs font-display font-semibold text-text-secondary">14 дней 0 ₽</span>
-              </div>
-              <div class="p-2.5 rounded-xl bg-white border border-border-card flex items-center gap-2 shadow-sm">
-                <i data-lucide="credit-card" class="w-4 h-4 text-forest-dark shrink-0"></i>
-                <span class="text-xs font-display font-semibold text-text-secondary">Без карты</span>
-              </div>
-              <div class="p-2.5 rounded-xl bg-white border border-border-card flex items-center gap-2 shadow-sm">
-                <i data-lucide="zap" class="w-4 h-4 text-yellow-accent shrink-0"></i>
-                <span class="text-xs font-display font-semibold text-text-secondary">Старт 3 мин</span>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Right Hero Showcase Card (Zendesk Style with Starburst) -->
-          <div class="lg:col-span-5 flex justify-center">
-            <div class="relative w-full max-w-md">
-              
-              <!-- Starburst Super Badge -->
-              <div class="starburst-badge z-20">
-                14 дней<br />0 ₽
-              </div>
-
-              <!-- Main Hero White Card -->
-              <div class="zen-card p-6 sm:p-8 space-y-5 relative">
-                
-                <div class="flex items-center justify-between pb-4 border-b border-border-subtle">
-                  <div class="flex items-center gap-3">
-                    <div class="w-11 h-11 rounded-2xl bg-mint text-forest-dark flex items-center justify-center font-bold text-lg">
-                      💅
-                    </div>
-                    <div>
-                      <div class="font-display font-bold text-sm text-forest-dark flex items-center gap-1.5">
-                        SlotBot • Live
-                        <span class="w-2 h-2 rounded-full bg-mint-accent"></span>
-                      </div>
-                      <div class="text-xs text-text-secondary">Онлайн-запись активна</div>
-                    </div>
-                  </div>
-                  <span class="px-2.5 py-1 rounded-full bg-mint text-forest-dark font-display font-bold text-xs">
-                    +100% авто
-                  </span>
-                </div>
-
-                <!-- Simulation Comparison Snippets -->
-                <div class="space-y-3 font-sans text-xs sm:text-sm">
-                  <div class="p-3.5 rounded-2xl bg-rose border border-coral-accent/15 flex gap-3 items-start">
-                    <span class="p-1 rounded-lg bg-white text-coral-accent font-bold shrink-0">✕</span>
-                    <div>
-                      <div class="font-display font-bold text-forest-dark">Раньше: 35 минут в переписке</div>
-                      <div class="text-text-secondary text-xs mt-0.5">«А когда свободно?», «Ой, в 14:00 не могу», «Перенесите пожалуйста»</div>
-                    </div>
-                  </div>
-
-                  <div class="p-3.5 rounded-2xl bg-mint border border-mint-accent/20 flex gap-3 items-start">
-                    <span class="p-1 rounded-lg bg-white text-mint-accent font-bold shrink-0">✓</span>
-                    <div>
-                      <div class="font-display font-bold text-forest-dark">С ботом: 20 секунд в 3 клика</div>
-                      <div class="text-text-secondary text-xs mt-0.5">Клиент сам выбрал процедуру, день и слот. Вы получили готовый пуш.</div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Hero Stats Numbers -->
-                <div class="grid grid-cols-2 gap-3 pt-2">
-                  <div class="p-3.5 rounded-2xl bg-sand-light border border-border-card text-center">
-                    <div class="font-display text-2xl font-extrabold text-forest-dark">35+ часов</div>
-                    <div class="text-[11px] font-medium text-text-secondary">свободы в месяц</div>
-                  </div>
-                  <div class="p-3.5 rounded-2xl bg-sand-light border border-border-card text-center">
-                    <div class="font-display text-2xl font-extrabold text-mint-accent">0 окон</div>
-                    <div class="text-[11px] font-medium text-text-secondary">не сгорает из-за забывчивости</div>
-                  </div>
-                </div>
-
-                <!-- Action Button in Card -->
-                <a href="#demo" class="block text-center w-full py-3 rounded-xl bg-forest-dark hover:bg-forest-deep text-xs font-display font-bold text-white transition-all shadow">
-                  Попробовать демо-запись ниже ↓
-                </a>
-
-              </div>
-
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- STAGE 2: METRICS & HIGHLIGHTS -->
-    <section id="metrics" class="py-12 sm:py-16 bg-cream/40 border-y border-border-subtle">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          
-          <div class="zen-card p-5 sm:p-6 space-y-2 text-center sm:text-left">
-            <div class="text-xs font-display font-bold uppercase tracking-wider text-coral-accent">Доходимость</div>
-            <div class="font-display text-3xl sm:text-4xl font-extrabold text-forest-dark">98%</div>
-            <div class="text-xs text-text-secondary leading-relaxed">
-              Клиенты не забывают благодаря автонапоминаниям за 24 ч и 2 ч.
-            </div>
-          </div>
-
-          <div class="zen-card p-5 sm:p-6 space-y-2 text-center sm:text-left">
-            <div class="text-xs font-display font-bold uppercase tracking-wider text-forest-dark">Скорость записи</div>
-            <div class="font-display text-3xl sm:text-4xl font-extrabold text-forest-dark">20 сек</div>
-            <div class="text-xs text-text-secondary leading-relaxed">
-              Клиент сам выбирает процедуру и слот в 3 клика в любое время суток.
-            </div>
-          </div>
-
-          <div class="zen-card p-5 sm:p-6 space-y-2 text-center sm:text-left">
-            <div class="text-xs font-display font-bold uppercase tracking-wider text-mint-accent">Экономия времени</div>
-            <div class="font-display text-3xl sm:text-4xl font-extrabold text-forest-dark">35+ ч</div>
-            <div class="text-xs text-text-secondary leading-relaxed">
-              Вы больше не отвлекаетесь на бесконечные переписки во время работы.
-            </div>
-          </div>
-
-          <div class="zen-card p-5 sm:p-6 space-y-2 text-center sm:text-left">
-            <div class="text-xs font-display font-bold uppercase tracking-wider text-forest-dark">Без приложений</div>
-            <div class="font-display text-3xl sm:text-4xl font-extrabold text-forest-dark">100%</div>
-            <div class="text-xs text-text-secondary leading-relaxed">
-              Работает прямо в Telegram, который уже есть у всех ваших клиентов.
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- STAGE 3: 7 TARGET NICHES (ДЛЯ КОГО ПОДХОДИТ) -->
-    <section id="niches" class="py-16 sm:py-24 relative">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        
-        <div class="text-center max-w-2xl mx-auto space-y-3 mb-10 sm:mb-14">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mint text-forest-dark font-display font-bold text-xs uppercase tracking-wider">
-            Целевая аудитория
-          </div>
-          <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-forest-dark">
-            Выберите <span class="underline-mint">вашу сферу</span> деятельности
-          </h2>
-          <p class="text-text-secondary text-sm sm:text-base">
-            Нажмите на свою нишу ниже, чтобы увидеть персональную конфигурацию сервиса, боли и выгоду:
-          </p>
-        </div>
-
-        <!-- Horizontal Scrollable Segmented Tabs -->
-        <div class="overflow-x-auto no-scrollbar py-2 mb-8 sm:mb-12 -mx-4 px-4 sm:mx-0">
-          <div class="flex items-center gap-2 w-max sm:mx-auto" id="nicheTabsContainer">
-            <button class="niche-nav-pill active"><span>💅 Бьюти</span></button>
-            <button class="niche-nav-pill"><span>🧠 Ментальное</span></button>
-            <button class="niche-nav-pill"><span>📚 Репетиторы</span></button>
-            <button class="niche-nav-pill"><span>🏋️ Фитнес</span></button>
-            <button class="niche-nav-pill"><span>🔮 Эзотерика</span></button>
-            <button class="niche-nav-pill"><span>🐾 Груминг</span></button>
-            <button class="niche-nav-pill"><span>💼 Консалтинг</span></button>
-          </div>
-        </div>
-
-        <!-- Dynamic Niche Showcase Card -->
-        <div class="zen-card p-6 sm:p-10 border-2 border-forest-dark/10 bg-white transition-all duration-300" id="nicheContentCard">
-          <div class="grid lg:grid-cols-12 gap-8 items-center">
-            
-            <!-- Left Column: Specs & Pains -->
-            <div class="lg:col-span-7 space-y-6">
-              
-              <div class="flex items-center gap-3">
-                <span class="font-mono text-[10px] uppercase font-bold px-3 py-1 rounded-full bg-coral-accent/10 text-coral-accent border border-coral-accent/20">
-                  Флагманская спецификация
-                </span>
-                <span class="text-xs font-mono text-text-muted">Мастера маникюра, бровисты, стилисты, лешмейкеры, косметологи</span>
-              </div>
-
-              <h3 class="font-display text-2xl sm:text-3xl font-extrabold text-forest-dark leading-snug">
-                Клиенты бронируют слоты за 20 секунд, пока вы работаете с пилкой или пинцетом
-              </h3>
-
-              <div class="space-y-2.5">
-                <div class="font-mono text-[11px] uppercase tracking-wider text-coral-accent font-bold">
-                  Специфические боли в вашей сфере:
-                </div>
-                <div class="flex items-start gap-3 text-xs sm:text-sm text-text-secondary">
-                  <span class="text-coral-accent shrink-0 font-bold">✕</span>
-                  <span>Руки в перчатках — невозможно ответить на звонок или писать в мессенджере во время процедуры.</span>
-                </div>
-                <div class="flex items-start gap-3 text-xs sm:text-sm text-text-secondary">
-                  <span class="text-coral-accent shrink-0 font-bold">✕</span>
-                  <span>Пока вы пилите ногти или наращиваете ресницы, клиент пишет троим мастерам и уходит к первому ответившему.</span>
-                </div>
-                <div class="flex items-start gap-3 text-xs sm:text-sm text-text-secondary">
-                  <span class="text-coral-accent shrink-0 font-bold">✕</span>
-                  <span>Клиент забыл про запись — вы сидите 2 часа вхолостую, теряя от 2 500 ₽ за каждое сгоревшее окно.</span>
-                </div>
-                <div class="flex items-start gap-3 text-xs sm:text-sm text-text-secondary">
-                  <span class="text-coral-accent shrink-0 font-bold">✕</span>
-                  <span>Путаница при наложении записей и ручном подсчёте перерывов на стерилизацию инструментов.</span>
-                </div>
-              </div>
-
-              <div class="p-4 rounded-2xl bg-mint border border-emerald-600/20 text-xs sm:text-sm text-forest-dark flex items-start gap-3">
-                <span class="text-emerald-700 text-base font-bold shrink-0">✓</span>
-                <div>
-                  <strong class="text-forest-dark font-bold">Решение бота:</strong> Бот мгновенно выдаёт клиенту реальные свободные окна с учётом перерывов и напоминает за 24 ч и 2 ч. Доходимость вырастает до 98%.
-                </div>
-              </div>
-
-              <div class="p-4 rounded-2xl bg-white border border-border-card shadow-sm space-y-2">
-                <p class="text-xs sm:text-sm text-text-secondary italic">«Раньше вечерами сидела до полуночи с блокнотом и отвечала на 50 сообщений "А когда свободно?". Теперь просто скидываю ссылку на бота в шапку профиля — записались 90% клиентов сами!»</p>
-                <div class="text-xs font-mono text-forest-dark font-semibold flex items-center gap-2">
-                  <span class="w-1.5 h-1.5 rounded-full bg-coral-accent"></span>
-                  <span>Екатерина В.</span>
-                  <span class="text-text-muted font-normal">(Топ-мастер маникюра, опыт 6 лет)</span>
-                </div>
-              </div>
-
-            </div>
-
-            <!-- Right Column: Live Menu Matrix -->
-            <div class="lg:col-span-5 space-y-4">
-              <div class="p-5 rounded-2xl bg-white border border-border-card shadow-sm space-y-3.5">
-                
-                <div class="flex justify-between items-center pb-2.5 border-b border-border-card">
-                  <span class="font-mono text-[10px] uppercase text-text-muted tracking-wider">Пример каталога услуг</span>
-                  <span class="font-mono text-[10px] text-coral-accent font-bold">Live Preview</span>
-                </div>
-
-                <div class="space-y-2">
-                  <div class="p-3 rounded-xl bg-sand/60 border border-border-card flex items-center justify-between hover:border-coral-accent/40 transition-colors">
-                    <div>
-                      <div class="text-xs font-bold text-forest-dark">Маникюр со снятием и покрытием</div>
-                      <div class="text-[10px] font-mono text-text-muted mt-0.5">1 ч 45 мин</div>
-                    </div>
-                    <div class="font-display font-bold text-sm text-emerald-700 shrink-0 ml-3">
-                      2 400 ₽
-                    </div>
-                  </div>
-                  <div class="p-3 rounded-xl bg-sand/60 border border-border-card flex items-center justify-between hover:border-coral-accent/40 transition-colors">
-                    <div>
-                      <div class="text-xs font-bold text-forest-dark">Архитектура и ламинирование бровей</div>
-                      <div class="text-[10px] font-mono text-text-muted mt-0.5">50 мин</div>
-                    </div>
-                    <div class="font-display font-bold text-sm text-emerald-700 shrink-0 ml-3">
-                      1 600 ₽
-                    </div>
-                  </div>
-                  <div class="p-3 rounded-xl bg-sand/60 border border-border-card flex items-center justify-between hover:border-coral-accent/40 transition-colors">
-                    <div>
-                      <div class="text-xs font-bold text-forest-dark">Наращивание ресниц (2D объём)</div>
-                      <div class="text-[10px] font-mono text-text-muted mt-0.5">2 ч</div>
-                    </div>
-                    <div class="font-display font-bold text-sm text-emerald-700 shrink-0 ml-3">
-                      2 800 ₽
-                    </div>
-                  </div>
-                  <div class="p-3 rounded-xl bg-sand/60 border border-border-card flex items-center justify-between hover:border-coral-accent/40 transition-colors">
-                    <div>
-                      <div class="text-xs font-bold text-forest-dark">Сложное окрашивание / AirTouch</div>
-                      <div class="text-[10px] font-mono text-text-muted mt-0.5">3 ч 30 мин</div>
-                    </div>
-                    <div class="font-display font-bold text-sm text-emerald-700 shrink-0 ml-3">
-                      7 500 ₽
-                    </div>
-                  </div>
-                </div>
-
-                <div class="grid grid-cols-3 gap-2 pt-2 border-t border-border-card text-center font-mono text-[10px]">
-                  <div class="p-2 rounded-lg bg-sand/60">
-                    <div class="font-display font-extrabold text-sm text-forest-dark">32 часа</div>
-                    <div class="text-text-muted">в месяц</div>
-                  </div>
-                  <div class="p-2 rounded-lg bg-sand/60">
-                    <div class="font-display font-extrabold text-sm text-emerald-700">от 12 000 ₽</div>
-                    <div class="text-text-muted">сохранено</div>
-                  </div>
-                  <div class="p-2 rounded-lg bg-sand/60">
-                    <div class="font-display font-extrabold text-sm text-coral-accent">0 пустых окон</div>
-                    <div class="text-text-muted">результат</div>
-                  </div>
-                </div>
-
-                <a href="https://t.me/zapishis_app_bot" target="_blank" rel="noopener noreferrer" class="btn-zen-coral w-full text-xs py-3 text-center">
-                  <span>Запустить @zapishis_app_bot</span>
-                  <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-                </a>
-
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- STAGE 4: LIVE INTERACTIVE PHONE SIMULATOR -->
-    <section id="demo" class="py-16 sm:py-24 bg-sky/40 border-y border-border-subtle relative overflow-hidden">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        
-        <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-          
-          <!-- Left Explanation & Mode Controls -->
-          <div class="lg:col-span-6 space-y-6 sm:space-y-8 text-center lg:text-left">
-            
-            <div class="space-y-3">
-              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white text-forest-dark font-display font-bold text-xs uppercase tracking-wider border border-border-subtle">
-                Тест-драйв онлайн
-              </div>
-              <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-forest-dark leading-tight">
-                Попробуйте записаться <span class="underline-sky">прямо в телефоне</span>
-              </h2>
-              <p class="text-text-secondary text-sm sm:text-base leading-relaxed">
-                Кликайте по кнопкам в смартфоне справа! Пройдите путь клиента от выбора процедуры до подтверждения записи, а затем переключитесь на экран мастера!
-              </p>
-            </div>
-
-            <!-- Mode Switcher -->
-            <div class="p-1.5 rounded-2xl bg-white border border-border-subtle flex items-center gap-2 shadow-sm max-w-md mx-auto lg:mx-0">
-              <button id="simModeClient" class="flex-1 py-3 px-4 rounded-xl font-display font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 bg-forest-dark text-white shadow">
-                <i data-lucide="user" class="w-4 h-4"></i>
-                <span>Экран клиента (Запись)</span>
-              </button>
-              <button id="simModeMaster" class="flex-1 py-3 px-4 rounded-xl font-display font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 text-text-secondary hover:text-forest-dark hover:bg-sand-light">
-                <i data-lucide="shield-check" class="w-4 h-4"></i>
-                <span class="relative">
-                  Экран мастера
-                  <span id="masterPushBadge" class="hidden absolute -top-1 -right-3 w-2.5 h-2.5 rounded-full bg-coral-accent animate-ping"></span>
-                </span>
-              </button>
-            </div>
-
-            <!-- Steps Guideline -->
-            <div class="space-y-2.5 text-left max-w-md mx-auto lg:mx-0 font-display text-xs sm:text-sm">
-              <div class="p-3.5 rounded-xl bg-white border border-border-card flex items-center gap-3 shadow-sm">
-                <span class="w-6 h-6 rounded-full bg-forest-dark text-white flex items-center justify-center text-xs font-bold shrink-0">1</span>
-                <span class="text-text-primary">Нажмите в телефоне <strong>«💅 Записаться на процедуру»</strong></span>
-              </div>
-              <div class="p-3.5 rounded-xl bg-white border border-border-card flex items-center gap-3 shadow-sm">
-                <span class="w-6 h-6 rounded-full bg-forest-dark text-white flex items-center justify-center text-xs font-bold shrink-0">2</span>
-                <span class="text-text-primary">Выберите услугу, удобный день и свободное время</span>
-              </div>
-              <div class="p-3.5 rounded-xl bg-white border border-border-card flex items-center gap-3 shadow-sm">
-                <span class="w-6 h-6 rounded-full bg-mint-accent text-white flex items-center justify-center text-xs font-bold shrink-0">3</span>
-                <span class="text-text-primary">Переключитесь на <strong>«Экран мастера»</strong> и подтвердите бронь!</span>
-              </div>
-            </div>
-
-            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-1">
-              <button id="simResetBtn" class="btn-zen-ghost text-xs py-2 px-4" aria-label="Сбросить диалог в симуляторе">
-                <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
-                <span>Сбросить диалог</span>
-              </button>
-              <a href="https://t.me/zapishis_app_bot" target="_blank" class="text-xs font-display font-bold text-forest-dark hover:underline">
-                Открыть в Telegram →
-              </a>
-            </div>
-
-          </div>
-
-          <!-- Right Phone Mockup -->
-          <div class="lg:col-span-6 flex justify-center w-full">
-            
-            <div class="hardware-phone">
-              <div class="hardware-island"></div>
-
-              <!-- Telegram Header Light -->
-              <div class="phone-header flex items-center justify-between">
-                <div class="flex items-center gap-2.5">
-                  <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-accent to-forest-dark flex items-center justify-center text-xs font-bold text-white shadow">
-                    💅
-                  </div>
-                  <div>
-                    <div class="flex items-center gap-1">
-                      <span class="font-display font-bold text-xs text-forest-dark truncate max-w-[170px]" id="phoneBotName">SlotBot | @zapishis_app_bot</span>
-                      <i data-lucide="badge-check" class="w-3.5 h-3.5 text-blue-accent shrink-0"></i>
-                    </div>
-                    <div class="text-[10px] text-mint-accent font-medium" id="phoneBotStatus">онлайн-запись 24/7</div>
-                  </div>
-                </div>
-                <button id="phoneQuickReset" title="Сбросить" aria-label="Сбросить симулятор" class="text-text-secondary hover:text-forest-dark p-1">
-                  <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
-                </button>
-              </div>
-
-              <!-- Message Stream -->
-              <div class="flex-1 overflow-y-auto p-3 space-y-2.5 font-sans text-xs select-none chat-messages" id="phoneChatBody">
-                <div class="sim-bubble-in">
-                  👋 <strong>Добро пожаловать!</strong><br />
-                  Я бот для моментальной онлайн-записи.<br />
-                  Выберите процедуру и свободное время прямо в Telegram ✨
-                  <span class="float-right text-[9px] text-text-muted ml-2 mt-1 font-mono">12:00</span>
-                </div>
-              </div>
-
-              <!-- Interactive Controls Area -->
-              <div class="phone-footer space-y-2" id="phoneKeyboardArea">
-                <button id="simBtnStartBooking" class="btn-zen-coral w-full text-xs py-3">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  <span>💅 Записаться на процедуру</span>
-                </button>
-                <div class="text-[10px] font-mono text-center text-text-muted">Нажмите на кнопку выше для старта</div>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- STAGE 5: BEFORE VS AFTER (БЫЛО VS СТАЛО) -->
-    <section id="comparison" class="py-16 sm:py-24 relative">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        
-        <div class="text-center max-w-2xl mx-auto space-y-3 mb-12 sm:mb-16">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose text-coral-accent font-display font-bold text-xs uppercase tracking-wider">
-            Контраст
-          </div>
-          <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-forest-dark">
-            Сколько сил вы <span class="underline-coral">теряете</span> без бота?
-          </h2>
-          <p class="text-text-secondary text-sm sm:text-base">
-            Сравните ежедневную рутину ручного согласования с автоматическим порядком:
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-          
-          <!-- Before Card (Хаос) -->
-          <div class="zen-card p-6 sm:p-8 bg-rose/40 border-2 border-coral-accent/20 space-y-6">
-            <div class="flex items-center justify-between pb-4 border-b border-coral-accent/15">
-              <div class="flex items-center gap-3">
-                <div class="w-9 h-9 rounded-xl bg-white text-coral-accent font-bold flex items-center justify-center shadow-sm">
-                  ✕
-                </div>
-                <div>
-                  <span class="text-xs font-display font-bold uppercase text-coral-accent tracking-wider">Было раньше</span>
-                  <h3 class="font-display font-extrabold text-xl text-forest-dark">Рутина и хаос</h3>
-                </div>
-              </div>
-            </div>
-
-            <div class="space-y-4 text-xs sm:text-sm text-text-secondary">
-              <div class="flex items-start gap-3">
-                <span class="text-coral-accent font-bold text-base shrink-0">✕</span>
-                <span><strong>Бесконечные переписки:</strong> «А в субботу можно? А в 15:00?». Вы отвлекаетесь от клиента посреди сложной процедуры.</span>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="text-coral-accent font-bold text-base shrink-0">✕</span>
-                <span><strong>Сгоревшие окна:</strong> Клиент забыл и не пришёл — окно сгорело, вы потеряли от 2 500 до 6 000 ₽ за 2 часа простоя.</span>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="text-coral-accent font-bold text-base shrink-0">✕</span>
-                <span><strong>Блокноты и заметки:</strong> Забыли внести перенос, случайно записали двоих на одно время — постоянный стресс.</span>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="text-coral-accent font-bold text-base shrink-0">✕</span>
-                <span><strong>Потеря клиентов:</strong> Не успели ответить за 15 минут — клиент уже записался к конкуренту с онлайн-записью.</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- After Card (Порядок) -->
-          <div class="zen-card p-6 sm:p-8 bg-mint/40 border-2 border-mint-accent/30 space-y-6">
-            <div class="flex items-center justify-between pb-4 border-b border-mint-accent/20">
-              <div class="flex items-center gap-3">
-                <div class="w-9 h-9 rounded-xl bg-white text-mint-accent font-bold flex items-center justify-center shadow-sm">
-                  ✓
-                </div>
-                <div>
-                  <span class="text-xs font-display font-bold uppercase text-mint-accent tracking-wider">С ботом SlotBot</span>
-                  <h3 class="font-display font-extrabold text-xl text-forest-dark">Полный порядок</h3>
-                </div>
-              </div>
-            </div>
-
-            <div class="space-y-4 text-xs sm:text-sm text-text-primary">
-              <div class="flex items-start gap-3">
-                <span class="text-mint-accent font-bold text-base shrink-0">✓</span>
-                <span><strong>Запись за 20 секунд 24/7:</strong> Ссылка в шапке профиля. Клиент видит свободные окна и записывается сам, даже ночью.</span>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="text-mint-accent font-bold text-base shrink-0">✓</span>
-                <span><strong>Автонапоминания за 24 ч и 2 ч:</strong> Бот вежливо напомнит клиенту в Telegram — доходимость возрастает до 98%.</span>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="text-mint-accent font-bold text-base shrink-0">✓</span>
-                <span><strong>Всё расписание в телефоне:</strong> Мгновенные пуш-уведомления с кнопками «Подтвердить» / «Отклонить» в 1 касание.</span>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="text-mint-accent font-bold text-base shrink-0">✓</span>
-                <span><strong>Рассылка «горящих окон»:</strong> Кто-то отменил запись? В 1 клик отправьте сообщение всей клиентской базе и закройте окно.</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- STAGE 6: ROI CALCULATOR -->
-    <section id="calculator" class="py-16 sm:py-24 bg-cream/40 border-y border-border-subtle relative">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        
-        <div class="text-center max-w-2xl mx-auto space-y-3 mb-12 sm:mb-16">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white text-forest-dark font-display font-bold text-xs uppercase tracking-wider border border-border-subtle">
-            Калькулятор окупаемости
-          </div>
-          <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-forest-dark">
-            Сколько вы <span class="underline-mint">сохраните и заработаете</span>?
-          </h2>
-          <p class="text-text-secondary text-sm sm:text-base">
-            Одно спасённое от забывчивости окно окупает подписку на бота на несколько месяцев вперёд.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center max-w-5xl mx-auto">
-          
-          <!-- Sliders Left -->
-          <div class="lg:col-span-7 zen-card p-6 sm:p-8 space-y-6">
-            
-            <div class="space-y-3">
-              <div class="flex justify-between items-center text-sm font-display font-bold">
-                <span class="text-text-secondary">Средняя стоимость вашей услуги:</span>
-                <span class="text-xl text-forest-dark" id="calcPriceDisplay">2 500 ₽</span>
-              </div>
-              <input type="range" min="1000" max="10000" step="250" value="2500" id="calcPriceInput" aria-label="Средняя стоимость вашей услуги в рублях" />
-              <div class="flex justify-between text-[11px] text-text-muted font-medium">
-                <span>1 000 ₽</span>
-                <span>5 000 ₽</span>
-                <span>10 000 ₽</span>
-              </div>
-            </div>
-
-            <div class="space-y-3">
-              <div class="flex justify-between items-center text-sm font-display font-bold">
-                <span class="text-text-secondary">Клиентов в неделю:</span>
-                <span class="text-xl text-forest-dark" id="calcClientsDisplay">15 чел.</span>
-              </div>
-              <input type="range" min="3" max="50" step="1" value="15" id="calcClientsInput" aria-label="Количество клиентов в неделю" />
-              <div class="flex justify-between text-[11px] text-text-muted font-medium">
-                <span>3 чел.</span>
-                <span>25 чел.</span>
-                <span>50 чел.</span>
-              </div>
-            </div>
-
-            <div class="grid grid-cols-2 gap-4 pt-4 border-t border-border-subtle">
-              <div class="p-3.5 rounded-xl bg-mint/50 border border-mint-accent/20">
-                <div class="text-[11px] font-display font-bold text-text-secondary uppercase">Сохранённая выручка:</div>
-                <div class="font-display text-2xl font-extrabold text-forest-dark mt-1" id="calcSavedMoney">+7 500 ₽</div>
-                <div class="text-[11px] text-text-secondary">в месяц на автонапоминаниях</div>
-              </div>
-              <div class="p-3.5 rounded-xl bg-sky/50 border border-blue-accent/20">
-                <div class="text-[11px] font-display font-bold text-text-secondary uppercase">Сэкономлено времени:</div>
-                <div class="font-display text-2xl font-extrabold text-forest-dark mt-1" id="calcSavedHours">22 часа</div>
-                <div class="text-[11px] text-text-secondary">в месяц на переписках</div>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Pricing & CTA Card Right -->
-          <div class="lg:col-span-5 zen-card p-6 sm:p-8 bg-forest-dark text-white space-y-6 relative overflow-hidden shadow-xl">
-            
-            <div class="flex justify-between items-start pb-4 border-b border-white/10">
-              <div>
-                <span class="font-display font-bold text-[11px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-coral-accent text-white">
-                  🔥 14 ДНЕЙ 0 ₽
-                </span>
-                <h3 class="font-display font-extrabold text-2xl text-white mt-2">Тариф «ПРО»</h3>
-              </div>
-              <div class="text-right">
-                <div class="text-xs text-white/50 line-through">990 ₽/мес</div>
-                <div class="font-display text-3xl font-extrabold text-yellow-accent">590 ₽<span class="text-xs font-normal text-white/70">/мес</span></div>
-              </div>
-            </div>
-
-            <div class="space-y-3 text-xs sm:text-sm text-white/90">
-              <div class="flex items-center gap-2.5">
-                <i data-lucide="check" class="w-4 h-4 text-mint-accent shrink-0 font-bold"></i>
-                <span>Онлайн-запись клиентов 24/7 без ограничений</span>
-              </div>
-              <div class="flex items-center gap-2.5">
-                <i data-lucide="check" class="w-4 h-4 text-mint-accent shrink-0 font-bold"></i>
-                <span>Автонапоминания клиентам за 24 ч и 2 ч</span>
-              </div>
-              <div class="flex items-center gap-2.5">
-                <i data-lucide="check" class="w-4 h-4 text-mint-accent shrink-0 font-bold"></i>
-                <span>Рассылка «горящих окон» при отменах</span>
-              </div>
-              <div class="flex items-center gap-2.5">
-                <i data-lucide="check" class="w-4 h-4 text-mint-accent shrink-0 font-bold"></i>
-                <span>Чёрный список и фото-галерея работ</span>
-              </div>
-            </div>
-
-            <a href="https://t.me/zapishis_app_bot" target="_blank" rel="noopener noreferrer" class="btn-zen-coral w-full text-center text-sm font-bold py-3.5 justify-center shadow-lg">
-              <span>Активировать 14 дней бесплатно</span>
-            </a>
-
-            <div class="text-[11px] text-center text-white/60">
-              Без привязки карты • Отмена в любой момент
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- STAGE 7: FAQ ACCORDION -->
-    <section id="faq" class="py-16 sm:py-24 relative">
-      <div class="max-w-3xl mx-auto px-4 sm:px-6">
-        
-        <div class="text-center space-y-3 mb-12 sm:mb-16">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sand-light text-forest-dark font-display font-bold text-xs uppercase tracking-wider border border-border-subtle">
-            FAQ
-          </div>
-          <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-forest-dark">
-            Часто задаваемые вопросы
-          </h2>
-        </div>
-
-        <div class="space-y-3" id="faqAccordion">
-          
-          <div class="faq-item zen-card overflow-hidden">
-            <button class="faq-toggle w-full p-5 text-left flex items-center justify-between gap-3 font-display font-bold text-forest-dark hover:text-coral-accent transition-colors text-sm sm:text-base">
-              <span>Нужно ли моим клиентам устанавливать специальное приложение?</span>
-              <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 text-text-secondary transition-transform shrink-0"></i>
-            </button>
-            <div class="faq-answer px-5 pb-5 text-sm text-text-secondary leading-relaxed hidden">
-              Нет! Всё работает прямо внутри Telegram, который уже установлен у большинства ваших клиентов. Они просто переходят по ссылке и за 20 секунд оформляют запись без регистрации.
-            </div>
-          </div>
-
-          <div class="faq-item zen-card overflow-hidden">
-            <button class="faq-toggle w-full p-5 text-left flex items-center justify-between gap-3 font-display font-bold text-forest-dark hover:text-coral-accent transition-colors text-sm sm:text-base">
-              <span>Сложно ли настроить бота без технических навыков?</span>
-              <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 text-text-secondary transition-transform shrink-0"></i>
-            </button>
-            <div class="faq-answer px-5 pb-5 text-sm text-text-secondary leading-relaxed hidden">
-              Настройка занимает от 3 до 5 минут со смартфона. Бот сам пошагово запросит ваши услуги, длительность, цены и рабочие дни.
-            </div>
-          </div>
-
-          <div class="faq-item zen-card overflow-hidden">
-            <button class="faq-toggle w-full p-5 text-left flex items-center justify-between gap-3 font-display font-bold text-forest-dark hover:text-coral-accent transition-colors text-sm sm:text-base">
-              <span>Подходит ли бот для психологов, тренеров, репетиторов и грумеров?</span>
-              <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 text-text-secondary transition-transform shrink-0"></i>
-            </button>
-            <div class="faq-answer px-5 pb-5 text-sm text-text-secondary leading-relaxed hidden">
-              Да, абсолютно! Бот адаптирован под 7 направлений: бьюти, психологи, репетиторы, фитнес-тренеры, тарологи, грумеры и бизнес-консультанты. Вы просто задаёте свои процедуры и график.
-            </div>
-          </div>
-
-          <div class="faq-item zen-card overflow-hidden">
-            <button class="faq-toggle w-full p-5 text-left flex items-center justify-between gap-3 font-display font-bold text-forest-dark hover:text-coral-accent transition-colors text-sm sm:text-base">
-              <span>Нужно ли привязывать банковскую карту для 14-дневного теста?</span>
-              <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 text-text-secondary transition-transform shrink-0"></i>
-            </button>
-            <div class="faq-answer px-5 pb-5 text-sm text-text-secondary leading-relaxed hidden">
-              Никаких карт. Вы получаете полный доступ ко всем функциям на 14 дней сразу после нажатия /start в боте.
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- STAGE 8: FINAL CTA BANNER (ZENDESK SKY / FOREST BANNER) -->
-    <section class="py-16 sm:py-24 bg-sky/60 border-t border-border-subtle relative text-center">
-      <div class="max-w-3xl mx-auto px-4 sm:px-6 space-y-6 sm:space-y-8">
-        
-        <div class="w-14 h-14 rounded-2xl bg-forest-dark text-white flex items-center justify-center mx-auto shadow-lg shadow-forest-dark/20">
-          <i data-lucide="sparkles" class="w-7 h-7 text-yellow-accent"></i>
-        </div>
-
-        <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-forest-dark leading-tight">
-          Готовы автоматизировать запись и <span class="underline-coral">забыть о рутине</span>?
-        </h2>
-
-        <p class="text-text-secondary text-sm sm:text-base max-w-lg mx-auto">
-          Подключите <strong class="text-forest-dark">@zapishis_app_bot</strong> за 3 минуты и начните принимать клиентов онлайн уже сегодня.
-        </p>
-
-        <div class="pt-2">
-          <a href="https://t.me/zapishis_app_bot" target="_blank" rel="noopener noreferrer" class="btn-zen-coral text-base py-4 px-9 shadow-xl hover:scale-105">
-            <i data-lucide="send" class="w-5 h-5"></i>
-            <span>Запустить в Telegram (@zapishis_app_bot)</span>
-          </a>
-        </div>
-
-        <div class="text-xs font-display font-semibold text-text-secondary">
-          14 ДНЕЙ ПОЛНЫЙ ДОСТУП • БЕЗ ПРИВЯЗКИ КАРТЫ • СТАРТ ЗА 3 МИНУТЫ
-        </div>
-
-      </div>
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="py-10 border-t border-border-subtle bg-sand-light text-xs text-text-secondary">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
-      
-      <div class="flex items-center gap-3">
-        <div class="w-7 h-7 rounded-xl bg-forest-dark flex items-center justify-center text-yellow-accent">
-          <i data-lucide="sparkles" class="w-4 h-4"></i>
-        </div>
-        <span class="font-display font-bold text-forest-dark text-sm">SlotBot — Онлайн-запись в Telegram</span>
-      </div>
-
-      <div class="flex items-center gap-6 font-display font-semibold">
-        <a href="https://t.me/zapishis_app_bot" target="_blank" class="hover:text-forest-dark transition-colors">Telegram Bot</a>
-        <a href="#niches" class="hover:text-forest-dark transition-colors">7 Сфер</a>
-        <a href="#pricing" class="hover:text-forest-dark transition-colors">Тарифы</a>
-        <a href="#faq" class="hover:text-forest-dark transition-colors">FAQ</a>
-      </div>
-
-      <div>
-        © 2026 SlotBot. Все права защищены.
-      </div>
-
-    </div>
-  </footer>
-
-  <!-- FLOATING MOBILE BOTTOM BAR (ДЛЯ INSTAGRAM-ТРАФИКА) -->
-  <div class="fixed bottom-3 left-3 right-3 z-40 sm:hidden mobile-floating-bar">
-    <a href="https://t.me/zapishis_app_bot" target="_blank" rel="noopener noreferrer" class="btn-zen-coral w-full py-3.5 px-4 text-sm font-display font-bold flex items-center justify-center gap-2 shadow-2xl backdrop-blur-lg">
-      <i data-lucide="send" class="w-4 h-4"></i>
-      <span>Запустить в Telegram бесплатно</span>
-    </a>
-  </div>
-
-  <!-- Deferred JavaScript for Peak Performance (No Render Blocking) -->
-  <script src="https://unpkg.com/lucide@latest" defer></script>
-  <script src="app.js?v=6.0" defer></script>
+<script src="app.js"></script>
 </body>
 </html>
