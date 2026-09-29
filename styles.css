@@ -90,7 +90,30 @@ header .w {
   justify-content: space-between;
   height: 60px;
 }
-.logo { font: 600 18px Unbounded, sans-serif; text-decoration: none; color: var(--ink); }
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: 600 18px Unbounded, sans-serif;
+  text-decoration: none;
+  color: var(--ink);
+}
+.logo-img {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+.ph-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.ph-logo {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
 nav a { margin-right: 22px; text-decoration: none; color: var(--mut); font-size: 15px; transition: color 0.2s; }
 nav a:hover { color: var(--ink); }
 

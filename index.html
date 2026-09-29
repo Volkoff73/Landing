@@ -9,14 +9,17 @@
 <meta property="og:title" content="SlotBot — клиенты записываются сами, вы работаете">
 <meta property="og:description" content="Онлайн-запись и напоминания в Telegram. Клиентам ничего скачивать не нужно. 14 дней бесплатно.">
 <meta name="theme-color" content="#fbfaf7">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💬%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <header><div class="w">
-<a class="logo" href="#top">SlotBot</a>
+<a class="logo" href="#top">
+  <img src="logo-transparent.png" alt="SlotBot" class="logo-img">
+  <span>SlotBot</span>
+</a>
 <nav><a href="#demo">Как это работает</a><a href="#pains">Что решает</a><a href="#calc">Калькулятор</a><a href="#pricing">Тариф</a><a href="#faq">Вопросы</a></nav>
 <a class="btn" style="padding:9px 16px;font-size:14px" href="https://t.me/zapishis_app_bot?start=site_nav" target="_blank" rel="noopener">Попробовать бесплатно</a>
 </div></header>
@@ -34,7 +37,14 @@
 </div>
 <div>
 <div class="tabs"><button id="tc" class="on">Глазами клиента</button><button id="tm">Глазами мастера<i id="dot" hidden></i></button></div>
-<div class="phone"><div class="ph">SlotBot<small>демо, кнопки нажимаются</small></div><div id="chat"></div><div id="kb"></div></div>
+<div class="phone">
+  <div class="ph">
+    <div class="ph-title"><img src="logo-transparent.png" alt="" class="ph-logo">SlotBot</div>
+    <small>демо, кнопки нажимаются</small>
+  </div>
+  <div id="chat"></div>
+  <div id="kb"></div>
+</div>
 <p id="hint"></p>
 </div>
 </section>
