@@ -1,0 +1,21 @@
+{
+  "name": "landing",
+  "version": "1.0.0",
+  "description": "High-Tech Interactive Landing Page for **SlotBot** (`@zapishis_app_bot`) — Telegram scheduling platform for beauty masters, psychologists, tutors, trainers, and service specialists.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Volkoff73/Landing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Volkoff73/Landing/issues"
+  },
+  "homepage": "https://github.com/Volkoff73/Landing#readme"
+}

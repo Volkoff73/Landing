@@ -11,48 +11,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
   <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-  <link rel="dns-prefetch" href="https://cdn.tailwindcss.com" />
   <link rel="dns-prefetch" href="https://unpkg.com" />
 
-  <!-- Google Fonts: Plus Jakarta Sans, Inter & JetBrains Mono with font-display: swap -->
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <!-- Optimized Google Fonts with font-display: swap -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
 
-  <!-- Preload Custom Stylesheet -->
-  <link rel="preload" href="styles.css?v=5.1" as="style" />
-  <link rel="stylesheet" href="styles.css?v=5.1" />
-
-  <!-- Tailwind CSS CDN with Zendesk-Inspired Light Palette -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            sand: '#fbfaf7',
-            'sand-light': '#f5f3ec',
-            mint: '#e3f0e6',
-            sky: '#deeff2',
-            cream: '#f6eee3',
-            rose: '#fceeed',
-            'forest-dark': '#03363d',
-            'forest-deep': '#02252a',
-            'forest-medium': '#17494f',
-            'text-primary': '#03363d',
-            'text-secondary': '#486266',
-            'coral-accent': '#e96d46',
-            'yellow-accent': '#f8c544',
-            'mint-accent': '#309e66',
-            'blue-accent': '#24a1de'
-          },
-          fontFamily: {
-            display: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
-            sans: ['Inter', 'sans-serif'],
-            mono: ['"JetBrains Mono"', 'monospace']
-          }
-        }
-      }
-    };
-  </script>
+  <!-- Pre-compiled Static CSS (Zero Runtime Overhead, Zero TBT) -->
+  <link rel="preload" href="styles.css?v=6.0" as="style" />
+  <link rel="stylesheet" href="styles.css?v=6.0" />
 </head>
 <body class="bg-sand text-text-primary antialiased selection:bg-coral-accent selection:text-white pb-20 sm:pb-0">
 
@@ -520,7 +486,7 @@
             </div>
 
             <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-1">
-              <button id="simResetBtn" class="btn-zen-ghost text-xs py-2 px-4">
+              <button id="simResetBtn" class="btn-zen-ghost text-xs py-2 px-4" aria-label="Сбросить диалог в симуляторе">
                 <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
                 <span>Сбросить диалог</span>
               </button>
@@ -551,7 +517,7 @@
                     <div class="text-[10px] text-mint-accent font-medium" id="phoneBotStatus">онлайн-запись 24/7</div>
                   </div>
                 </div>
-                <button id="phoneQuickReset" title="Сбросить" class="text-text-secondary hover:text-forest-dark p-1">
+                <button id="phoneQuickReset" title="Сбросить" aria-label="Сбросить симулятор" class="text-text-secondary hover:text-forest-dark p-1">
                   <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
                 </button>
               </div>
@@ -701,7 +667,7 @@
                 <span class="text-text-secondary">Средняя стоимость вашей услуги:</span>
                 <span class="text-xl text-forest-dark" id="calcPriceDisplay">2 500 ₽</span>
               </div>
-              <input type="range" min="1000" max="10000" step="250" value="2500" id="calcPriceInput" />
+              <input type="range" min="1000" max="10000" step="250" value="2500" id="calcPriceInput" aria-label="Средняя стоимость вашей услуги в рублях" />
               <div class="flex justify-between text-[11px] text-text-muted font-medium">
                 <span>1 000 ₽</span>
                 <span>5 000 ₽</span>
@@ -714,7 +680,7 @@
                 <span class="text-text-secondary">Клиентов в неделю:</span>
                 <span class="text-xl text-forest-dark" id="calcClientsDisplay">15 чел.</span>
               </div>
-              <input type="range" min="3" max="50" step="1" value="15" id="calcClientsInput" />
+              <input type="range" min="3" max="50" step="1" value="15" id="calcClientsInput" aria-label="Количество клиентов в неделю" />
               <div class="flex justify-between text-[11px] text-text-muted font-medium">
                 <span>3 чел.</span>
                 <span>25 чел.</span>
@@ -914,6 +880,6 @@
 
   <!-- Deferred JavaScript for Peak Performance (No Render Blocking) -->
   <script src="https://unpkg.com/lucide@latest" defer></script>
-  <script src="app.js?v=5.1" defer></script>
+  <script src="app.js?v=6.0" defer></script>
 </body>
 </html>
