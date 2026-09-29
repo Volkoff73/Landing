@@ -4,8 +4,6 @@
    Mobile-First & Instagram-Optimized Interactive Landing
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
-
 :root {
   /* Color Palette — Zendesk Warm Light Style */
   --bg-sand: #fbfaf7;
@@ -543,4 +541,30 @@ input[type="range"]::-webkit-slider-thumb:hover {
    -------------------------------------------------------------------------- */
 .mobile-floating-bar {
   box-shadow: 0 -4px 20px rgba(3, 54, 61, 0.12);
+}
+
+/* --------------------------------------------------------------------------
+   Core Web Vitals & Rendering Performance Optimizations
+   -------------------------------------------------------------------------- */
+#nicheContentCard {
+  min-height: 480px;
+}
+
+.chat-messages {
+  min-height: 380px;
+}
+
+/* Content-visibility for below-the-fold sections to boost LCP & reduce initial rendering work */
+#comparison,
+#calculator,
+#pricing,
+#faq {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 700px;
+}
+
+/* Prevent icon flash and layout shift */
+[data-lucide] {
+  display: inline-block;
+  vertical-align: middle;
 }

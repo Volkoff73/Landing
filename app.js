@@ -4,10 +4,14 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize Lucide Icons
-  if (window.lucide) {
-    window.lucide.createIcons();
+  // Initialize Lucide Icons with resilience to deferred loading
+  function initIcons() {
+    if (window.lucide && typeof window.lucide.createIcons === 'function') {
+      window.lucide.createIcons();
+    }
   }
+  initIcons();
+  window.addEventListener('load', initIcons, { once: true, passive: true });
 
   // Mobile menu drawer
   const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -856,16 +860,24 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ==========================================================================
-     5. STICKY NAVBAR
+     5. HIGH-PERFORMANCE STICKY NAVBAR (RAF & Passive Listener)
      ========================================================================== */
   const navbar = document.getElementById('navbar');
+  let ticking = false;
   window.addEventListener('scroll', () => {
-    if (!navbar) return;
-    if (window.scrollY > 40) {
-      navbar.classList.add('shadow-md', 'bg-bg-sand/95', 'backdrop-blur-md');
-    } else {
-      navbar.classList.remove('shadow-md', 'bg-bg-sand/95', 'backdrop-blur-md');
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        if (navbar) {
+          if (window.scrollY > 40) {
+            navbar.classList.add('shadow-md', 'bg-sand/95', 'backdrop-blur-md');
+          } else {
+            navbar.classList.remove('shadow-md', 'bg-sand/95', 'backdrop-blur-md');
+          }
+        }
+        ticking = false;
+      });
+      ticking = true;
     }
-  });
+  }, { passive: true });
 
 });
