@@ -13,7 +13,7 @@
 }
 
 * { box-sizing: border-box; margin: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 
 body {
   font: 16px/1.55 "Golos Text", system-ui, sans-serif;
