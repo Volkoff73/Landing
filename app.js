@@ -161,4 +161,18 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(el);
   });
 
+  // Sticky bottom bar graceful reveal on mobile
+  const bar = document.querySelector('.bar');
+  if (bar) {
+    const handleScroll = () => {
+      if (window.scrollY > 220) {
+        bar.classList.add('visible');
+      } else {
+        bar.classList.remove('visible');
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+  }
+
 });
