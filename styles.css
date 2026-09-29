@@ -88,31 +88,35 @@ header .w {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 60px;
+  height: 68px;
 }
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font: 600 18px Unbounded, sans-serif;
+  gap: 12px;
+  font: 600 20px Unbounded, sans-serif;
   text-decoration: none;
   color: var(--ink);
+  line-height: 1;
 }
 .logo-img {
-  height: 32px;
+  height: 44px;
   width: auto;
   object-fit: contain;
   display: block;
+  flex-shrink: 0;
 }
 .ph-title {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+  font-size: 14px;
 }
 .ph-logo {
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
   object-fit: contain;
+  flex-shrink: 0;
 }
 nav a { margin-right: 22px; text-decoration: none; color: var(--mut); font-size: 15px; transition: color 0.2s; }
 nav a:hover { color: var(--ink); }
