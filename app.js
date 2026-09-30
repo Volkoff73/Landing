@@ -91,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
     add("m", "b", "Готово, клиент получил уведомление.");
     kb.m = [];
     add("c", "b", "🎉 Мастер подтвердил вашу запись.");
+    if (typeof ym === 'function') { ym(113220443, 'reachGoal', 'demo_completed'); }
     hint(3);
     setMode("c");
     
@@ -174,5 +175,38 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
   }
+
+  // Yandex Metrika Goals Tracking
+  const trackGoal = (goalName, params) => {
+    if (typeof ym === 'function') {
+      try {
+        ym(113220443, 'reachGoal', goalName, params);
+      } catch (e) {
+        console.warn('Metrika goal error:', e);
+      }
+    }
+  };
+
+  document.querySelectorAll('a[href*="t.me/zapishis_app_bot"]').forEach(link => {
+    link.addEventListener('click', () => {
+      trackGoal('lead_telegram');
+      const href = link.getAttribute('href') || '';
+      if (href.includes('site_nav')) trackGoal('lead_nav');
+      else if (href.includes('site_hero')) trackGoal('lead_hero');
+      else if (href.includes('site_pricing')) trackGoal('lead_pricing');
+      else if (href.includes('site_sticky')) trackGoal('lead_sticky');
+      else if (href.includes('site_final')) trackGoal('lead_final');
+    });
+  });
+
+  let calcTracked = false;
+  document.querySelectorAll('.calc input').forEach(input => {
+    input.addEventListener('change', () => {
+      if (!calcTracked) {
+        trackGoal('calc_used');
+        calcTracked = true;
+      }
+    });
+  });
 
 });
