@@ -3,11 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-<title>SlotBot — онлайн-запись клиентов в Telegram для мастеров</title>
-<meta name="description" content="Telegram-бот: клиенты сами записываются в ваши свободные окна и получают напоминания за 24 и за 2 часа. 14 дней бесплатно, затем 590 ₽ в месяц.">
+<title>SlotBot — бот для онлайн-записи клиентов в Telegram для мастеров | Без переплат</title>
+<meta name="description" content="Бот для записи клиентов в Telegram: клиенты сами выбирают свободные окна и получают напоминания за 24 и за 2 часа. Замена YClients и Dikidi за 590 ₽/мес. 14 дней бесплатно без привязки карты.">
+<link rel="canonical" href="https://slotbot-app.ru/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="SlotBot — клиенты записываются сами, вы работаете">
-<meta property="og:description" content="Онлайн-запись и напоминания в Telegram. Клиентам ничего скачивать не нужно. 14 дней бесплатно.">
+<meta property="og:url" content="https://slotbot-app.ru/">
+<meta property="og:site_name" content="SlotBot">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="SlotBot — онлайн-запись клиентов в Telegram для мастеров">
+<meta property="og:description" content="Клиенты записываются сами в ваши свободные окна. Напоминания за 24 и за 2 часа. Замена дорогим CRM за 590 ₽/мес. 14 дней бесплатно.">
 <meta name="theme-color" content="#fbfaf7">
 <link rel="icon" type="image/png" href="data:image/png;base64,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">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,6 +30,85 @@
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/113220443" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
+<!-- Schema.org Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://slotbot-app.ru/#software",
+      "name": "SlotBot",
+      "url": "https://slotbot-app.ru/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Telegram, Web, iOS, Android, Windows, macOS",
+      "description": "Telegram-бот для онлайн-записи клиентов и автоматических напоминаний о визитах для мастеров и сферы услуг",
+      "offers": {
+        "@type": "Offer",
+        "price": "590.00",
+        "priceCurrency": "RUB",
+        "priceValidUntil": "2027-12-31",
+        "availability": "https://schema.org/InStock",
+        "description": "14 дней бесплатный пробный период, затем 590 ₽ в месяц"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://slotbot-app.ru/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Клиентам нужно что-то устанавливать?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Нет. Запись идёт внутри Telegram: клиент открывает вашу ссылку, выбирает услугу, день и время."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Нужна ли банковская карта для пробного периода?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Нет. 14 дней можно пользоваться бесплатно и без привязки карты."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Я не разбираюсь в технике. Справлюсь?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Бот сам задаёт вопросы при заявке, а услуги, цены, график и перерывы вы настраиваете кнопками в меню мастера. Программировать ничего не нужно."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Чем SlotBot отличается от YClients и Dikidi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SlotBot работает прямо внутри Telegram, не требует от клиентов скачивания приложений и стоит всего 590 ₽/мес вместо 2 000 – 4 000 ₽. Идеально для частных мастеров, бьюти-специалистов и небольших студий."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как бот борется с неявками и забытыми записями?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Бот автоматически отправляет клиенту напоминания в Telegram за 24 часа и за 2 часа до визита. Клиент подтверждает визит нажатием одной кнопки, а вы не теряете доход из-за пустых окон."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Подойдёт ли бот не только для бьюти?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да, он рассчитан на любые услуги с записью по времени: психологи, репетиторы, тренеры, консультанты, груминг."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <header><div class="w">
@@ -132,6 +215,8 @@
 <h2>Частые вопросы</h2>
 <details><summary>Клиентам нужно что-то устанавливать?</summary><p>Нет. Запись идёт внутри Telegram: клиент открывает вашу ссылку, выбирает услугу, день и время.</p></details>
 <details><summary>Нужна ли банковская карта для пробного периода?</summary><p>Нет. 14 дней можно пользоваться бесплатно и без привязки карты.</p></details>
+<details><summary>Чем SlotBot отличается от YClients и Dikidi?</summary><p>SlotBot работает прямо внутри Telegram, не требует от клиентов скачивания сторонних приложений и стоит всего 590 ₽/мес вместо 2 000 – 4 000 ₽. Идеально подходит частным мастерам, бьюти-специалистам и небольшим студиям без переплат за сложный функционал.</p></details>
+<details><summary>Как бот борется с неявками и забытыми записями?</summary><p>Бот автоматически отправляет клиенту напоминания в Telegram за 24 часа и за 2 часа до визита. Клиент подтверждает визит нажатием одной кнопки, а вы не теряете доход из-за пустых окон в расписании.</p></details>
 <details><summary>Я не разбираюсь в технике. Справлюсь?</summary><p>Бот сам задаёт вопросы при заявке, а услуги, цены, график и перерывы вы настраиваете кнопками в меню мастера. Программировать ничего не нужно.</p></details>
 <details><summary>Подойдёт ли бот не только для бьюти?</summary><p>Да, он рассчитан на любые услуги с записью по времени: психологи, репетиторы, тренеры, консультанты, груминг.</p></details>
 </div></section>
