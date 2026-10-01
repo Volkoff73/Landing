@@ -147,24 +147,21 @@ document.addEventListener('DOMContentLoaded', () => {
   calc();
 
   // Animation on Scroll Logic (Reveal)
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.15
-  };
+  if ('IntersectionObserver' in window) {
+    document.body.classList.add('has-reveal');
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '60px', threshold: 0.05 });
 
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-        observer.unobserve(entry.target);
-      }
+    document.querySelectorAll('.reveal').forEach(el => {
+      observer.observe(el);
     });
-  }, observerOptions);
-
-  document.querySelectorAll('.reveal').forEach(el => {
-    observer.observe(el);
-  });
+  }
 
   // Sticky bottom bar graceful reveal on mobile
   const bar = document.querySelector('.bar');

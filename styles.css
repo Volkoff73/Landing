@@ -370,13 +370,17 @@ footer { padding: 40px 0; font-size: 13px; color: var(--mut); border-top: 1px so
   transform: translateY(0);
 }
 
-/* Scroll Reveal Animations */
+/* Scroll Reveal Animations (Progressive Enhancement) */
 .reveal {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+body.has-reveal .reveal:not(.hero):not(.active) {
   opacity: 0;
   transform: translateY(24px);
-  transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
 }
-.reveal.active {
+body.has-reveal .reveal.active {
   opacity: 1;
   transform: translateY(0);
 }
