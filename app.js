@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const okonStr = pluralizeRu(k, "запись", "записи", "записей");
-    need.textContent = `Тариф стоит 590 ₽ в месяц. Он окупается, если бот вернёт всего ${k} ${okonStr} в месяц.`;
+    need.textContent = `Тариф — 590 ₽/мес. Он окупается, если бот вернёт всего ${k} ${okonStr} в месяц.`;
   }
   
   document.querySelectorAll(".calc input").forEach(i => i.oninput = calc);
