@@ -130,12 +130,16 @@ document.addEventListener('DOMContentLoaded', () => {
     lost_.textContent = f(lost);
     back.textContent = f(lost * r / 100);
     
-    const k = Math.ceil(590 / p);
-    
-    let okonStr = "записи";
-    if (k === 1) okonStr = "запись";
-    if (k > 4) okonStr = "записей";
-    
+    function pluralizeRu(n, one, two, five) {
+      const t = Math.abs(n) % 100;
+      const n1 = t % 10;
+      if (t > 10 && t < 20) return five;
+      if (n1 > 1 && n1 < 5) return two;
+      if (n1 === 1) return one;
+      return five;
+    }
+
+    const okonStr = pluralizeRu(k, "запись", "записи", "записей");
     need.textContent = `Тариф стоит 590 ₽ в месяц. Он окупается, если бот вернёт всего ${k} ${okonStr} в месяц.`;
   }
   
