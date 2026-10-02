@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>404 — Страница не найдена | SlotBot</title>
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/png" href="favicon.png">
+<meta name="theme-color" content="#fbfaf7">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Unbounded:wght@600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Unbounded:wght@600;700&display=swap"></noscript>
+
+<style>
+:root {
+  --bg: #fbfaf7;
+  --ink: #03363d;
+  --mut: #486266;
+  --acc: #e96d46;
+  --line: #e5e2db;
+  --surface: #ffffff;
+}
+
+* { box-sizing: border-box; margin: 0; }
+body {
+  font: 16px/1.55 "Golos Text", system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+
+header {
+  border-bottom: 1px solid var(--line);
+  background: rgba(251, 250, 247, 0.94);
+  padding: 16px 20px;
+}
+.header-wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--ink);
+}
+.logo-mark {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+.logo-text {
+  font-family: Unbounded, "Golos Text", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+}
+.logo-text span {
+  color: var(--acc);
+}
+
+main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.box {
+  max-width: 540px;
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 48px 32px;
+  text-align: center;
+  box-shadow: 0 12px 32px rgba(3, 54, 61, 0.04);
+}
+
+.code {
+  font-family: Unbounded, sans-serif;
+  font-size: clamp(64px, 14vw, 96px);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--acc);
+  margin-bottom: 16px;
+  letter-spacing: -2px;
+}
+
+h1 {
+  font-family: Unbounded, sans-serif;
+  font-size: clamp(20px, 4vw, 26px);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+p {
+  color: var(--mut);
+  font-size: 16px;
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (min-width: 480px) {
+  .actions {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 24px;
+  border-radius: 12px;
+  background: var(--acc);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1.5px solid var(--acc);
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-align: center;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(233, 109, 70, 0.25);
+}
+.btn.sec {
+  background: var(--surface);
+  color: var(--ink);
+  border-color: var(--line);
+}
+.btn.sec:hover {
+  background: var(--bg);
+  box-shadow: none;
+}
+
+footer {
+  border-top: 1px solid var(--line);
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--mut);
+}
+</style>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=113220443', 'ym');
+
+    ym(113220443, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/113220443" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</head>
+<body>
+
+<header>
+  <div class="header-wrap">
+    <a href="/" class="logo">
+      <img src="logo.png" alt="SlotBot" class="logo-mark" width="32" height="32" onerror="this.style.display='none'">
+      <div class="logo-text">Slot<span>Bot</span></div>
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="box">
+    <div class="code">404</div>
+    <h1>Страница не найдена</h1>
+    <p>Возможно, адрес набран с ошибкой или страница была перемещена. Но сервис онлайн-записи SlotBot всегда готов к работе!</p>
+    <div class="actions">
+      <a href="/" class="btn">На главную</a>
+      <a href="https://t.me/zapishis_app_bot?start=site_404" target="_blank" rel="noopener noreferrer" class="btn sec">Открыть бота</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 SlotBot. Сервис онлайн-записи клиентов в Telegram.
+</footer>
+
+</body>
+</html>
