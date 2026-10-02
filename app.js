@@ -139,8 +139,9 @@ document.addEventListener('DOMContentLoaded', () => {
       return five;
     }
 
+    const k = Math.max(1, Math.ceil(200 / (p || 2000)));
     const okonStr = pluralizeRu(k, "запись", "записи", "записей");
-    need.textContent = `Тариф — 590 ₽/мес. Он окупается, если бот вернёт всего ${k} ${okonStr} в месяц.`;
+    need.textContent = `Тариф — 200 ₽/мес. Он окупается, если бот вернёт всего ${k} ${okonStr} в месяц.`;
   }
   
   document.querySelectorAll(".calc input").forEach(i => i.oninput = calc);
