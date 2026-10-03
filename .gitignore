@@ -2,3 +2,7 @@ tailwindcss.exe
 node_modules/
 build_css.py
 .codebase-memory/
+*.bat
+*.log
+.DS_Store
+Thumbs.db
