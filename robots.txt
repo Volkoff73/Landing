@@ -1,5 +1,12 @@
 User-agent: *
 Allow: /
+Disallow: /build_css.py
+Disallow: /src/
+
+User-agent: Yandex
+Allow: /
+Clean-param: ref /
+Clean-param: utm_source&utm_medium&utm_campaign /
 
 Sitemap: https://slotbot-app.ru/sitemap.xml
-Host: slotbot-app.ru
+Host: https://slotbot-app.ru
